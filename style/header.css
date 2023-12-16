@@ -1,0 +1,119 @@
+header {
+  position: relative;
+  height: 70px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  /* display: flex; */
+  /* flex-direction:column; */
+}
+
+/* 手機版logo外層容器 */
+.header-row {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 5;
+}
+
+.header-logo-mobile {
+  margin: 0 20px;
+  height: 60px;
+}
+
+.header-logo-tab, .header-row2 {
+  display: none;
+}
+
+.header-icon, .header-ham {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  padding: 10px;
+  margin: auto 0;
+}
+
+.header-right {
+  display: flex;
+  justify-content: end;
+  position: sticky;
+  height: 60px;
+  left: 100vw;
+  bottom: 10px;
+  margin: 0 20px;
+  z-index: 100;
+  padding: 5px 0;
+}
+
+.hamburger-list {
+  display: flex;
+  width: 20rem;
+  position: sticky;
+  flex-direction: column;
+  left: 100vw;
+  z-index: 1000;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-special {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 17rem;
+  height: 45px;
+  border: 0px;
+  background-color: #7b3027;
+  margin: 10px auto;
+  
+}
+
+.btn-special a {
+  text-decoration: none;
+  color: #F4F3EE;
+  font-size: 1rem;
+  letter-spacing: 20%;
+}
+
+.btn-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 17rem;
+  height: 45px;
+  background-color: #FFF;
+  margin: 10px auto;
+  border: 0px;
+  border-bottom: 1px solid #000;
+}
+
+.btn-list a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  letter-spacing: 20%;
+}
+
+@media screen and (min-width: 36rem) {
+  header {
+    height: 120px;
+  }
+  .header-logo {
+    margin: 0 auto;
+  }
+  .header-logo-mobile, .hamburger, .hamburger-list {
+    display: none;
+  }
+  .header-logo-tab, .header-row2 {
+    display: flex;
+  }
+  .header-row2 {
+    margin: 25px auto;
+    justify-content: center;
+    a {
+    text-decoration:none;
+    margin: 0 10px;
+    font-size: 1rem;
+    color: #7b3027;
+  }
+  }
+}
