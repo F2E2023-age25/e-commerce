@@ -25,7 +25,7 @@ header {
   display: none;
 }
 
-.header-icon, .header-ham {
+.header-icon {
   display: inline-block;
   position: relative;
   height: 30px;
@@ -46,13 +46,17 @@ header {
 }
 
 .hamburger-list {
-  display: flex;
   width: 20rem;
   position: sticky;
   flex-direction: column;
   left: 100vw;
   z-index: 1000;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  display: none;
+}
+
+.hamburger-list.is-active {
+  display: flex;
 }
 
 .btn-special {
@@ -100,7 +104,7 @@ header {
   .header-logo {
     margin: 0 auto;
   }
-  .header-logo-mobile, .hamburger, .hamburger-list {
+  .header-logo-mobile, .hamburger, .hamburger-list, .hamburger-list.is-active {
     display: none;
   }
   .header-logo-tab, .header-row2 {
@@ -114,6 +118,6 @@ header {
     margin: 0 10px;
     font-size: 1rem;
     color: #7b3027;
-  }
+    }
   }
 }
