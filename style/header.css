@@ -46,6 +46,7 @@ header {
   cursor: pointer;
 }
 
+/* 漢堡選單 */
 .hamburger-list {
   width: 20rem;
   position: sticky;
@@ -97,6 +98,34 @@ header {
   font-size: 1rem;
   letter-spacing: 20%;
 }
+
+.hamburger-list-bottom {
+  background-color: #BCB8B1;
+  border-top: 2px solid rgba(138, 129, 124, 0.25);
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+  height: 50px;
+}
+
+.hamburger-list-bottom img {
+  height: 30px;
+  padding: 10px 5px;
+}
+
+.hamburger-list-bottom p {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: rgba(138, 129, 124, 0.75);
+  align-items: center;
+}
+
+.hamburger-list-bottom div {
+  align-items: center;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
 
 @media screen and (min-width: 36rem) {
   header {
