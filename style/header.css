@@ -25,14 +25,6 @@ header {
   display: none;
 }
 
-.header-icon {
-  display: inline-block;
-  position: relative;
-  height: 30px;
-  padding: 10px;
-  margin: auto 0;
-}
-
 .header-right {
   display: flex;
   justify-content: end;
@@ -43,6 +35,15 @@ header {
   margin: 0 20px;
   z-index: 100;
   padding: 5px 0;
+}
+
+.header-icon {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
 }
 
 .hamburger-list {
