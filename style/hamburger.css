@@ -29,7 +29,7 @@
     background-color: #7b3027; }
 
 .hamburger-box {
-  width: 40px;
+  width: 30px;
   height: 24px;
   display: inline-block;
   position: relative; }
@@ -39,8 +39,8 @@
   top: 50%;
   margin-top: -2px; }
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 35px;
-    height: 5px;
+    width: 25px;
+    height: 3px;
     background-color: #7b3027;
     border-radius: 10px;
     position: absolute;
@@ -51,9 +51,9 @@
     content: "";
     display: block; }
   .hamburger-inner::before {
-    top: -10px; }
+    top: -8px; }
   .hamburger-inner::after {
-    bottom: -10px; }
+    bottom: -8px; }
 
 /*
    * 3DX
