@@ -10,7 +10,9 @@
   <body>
     <header></header>
     <div class="cart-main">
+      <!-- 購物車內容 -->
       <div class="cart-content">
+        <!-- 放進購物車的商品 -->
         <div class="cart-product">
           <div class="product-info d-flex">
             <img class="product-img" src="./cart01.jpg" alt="" />
@@ -33,7 +35,7 @@
               <br />
               <span>折扣價：NT.</span><span class="discount-price">531</span
               ><br />
-              <span>總計：NT.</span><span class="final-price">531</span>
+              <span>小計：　NT.</span><span class="final-price">531</span>
             </div>
           </div>
           <button><a class="next-time-btn" href="">下次買</a></button>
@@ -41,9 +43,9 @@
         </div>
         <div class="cart-product">
           <div class="product-info d-flex">
-              <img class="product-img" src="./cart02.jpg" alt="" />
+            <img class="product-img" src="./cart02.jpg" alt="" />
             <div class="product-details">
-              <p class="product-name">裙</p>
+              <p class="product-name">休閒感抽身直筒裙</p>
               <p class="product-number">MG1A001970903</p>
               <br />
               <span>顏色：</span><span class="product-color">米白</span><br />
@@ -61,19 +63,111 @@
               <br />
               <span>折扣價：NT.</span><span class="discount-price">890</span
               ><br />
-              <span>總計：NT.</span><span class="final-price">890</span>
+              <span>小計：　NT.</span><span class="final-price">890</span>
             </div>
           </div>
           <button><a class="next-time-btn" href="">下次買</a></button>
           <button class="delete-btn">X</button>
         </div>
       </div>
+      <!-- 折價券 -->
       <div class="coupon">
-        <span>折價券代碼：</span><input type="text">
-        <br>
+        <span>折價券代碼：</span><input type="text" />
+        <br />
         <button><a href="">Coupon</a></button>
         <p>單筆訂單限折抵一張折價券</p>
       </div>
+      <!-- 付款方式、運送方式 -->
+      <div class="payment-delivery">
+        <!-- 付款方式 -->
+        <div class="payment-method">
+          <p class="method-title">付款方式</p>
+          <form action="" name="form1">
+            <div>
+              <input
+                type="checkbox"
+                class="payment-input"
+                id="credit-card"
+                name="payment"
+                onclick="return chk(this)"
+              />
+              <label for="credit-card">信用卡線上刷卡</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                class="payment-input"
+                id="cash-on-store-delivery"
+                name="payment"
+                onclick="return chk(this)"
+              />
+              <label for="cash-on-store-delivery">超商貨到付款</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                class="payment-input"
+                id="ATM"
+                name="payment"
+                onclick="return chk(this)"
+              />
+              <label for="ATM">ATM轉帳</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                class="payment-input"
+                id="line-pay"
+                name="payment"
+                onclick="return chk(this)"
+              />
+              <label for="line-pay">LINE Pay(可用LINE POINTS折抵)</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                class="payment-input"
+                id="cash-on-home-delivery"
+                name="payment"
+                onclick="return chk(this)"
+              />
+              <label for="cash-on-home-delivery">貨到付款(宅配)</label>
+            </div>
+          </form>
+        </div>
+        <!-- 運送方式 -->
+        <div class="delivery-method">
+          <p class="method-title">運送方式</p>
+          <div>
+            <input
+              type="radio"
+              class="delivery-input"
+              id="7-eleven"
+              name="delivery"
+            />
+            <label for="7-eleven">7-11超商取貨(滿$2000免運)</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              class="delivery-input"
+              id="family-mart"
+              name="delivery"
+            />
+            <label for="family-mart">全家超商取貨(滿$2000免運)</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              class="delivery-input"
+              id="home-delivery"
+              name="delivery"
+            />
+            <label for="home-delivery">宅配</label>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="./carts.js"></script>
   </body>
 </html>

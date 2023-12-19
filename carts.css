@@ -19,16 +19,19 @@ p {
   
 }
 
-.cart-content {
+.cart-main {
   width: 90vw;
+  margin: 0 auto;
+}
+
+.cart-content {
+  width: 100%;
 }
 
 .product-info {
   position: relative;
   margin-bottom: 20px;
 }
-
-
 
 .product-img {
   max-width: 30%;
@@ -90,6 +93,13 @@ input {
   font-size: 0.85rem;
 }
 
+.payment-delivery {
+  background-color: #fff;
+}
+
+.payment-method, .delivery-method {
+  padding: 30px 50px 0px 50px;
+}
 
 /* 大於768px */
 @media screen and (min-width: 768px) {
