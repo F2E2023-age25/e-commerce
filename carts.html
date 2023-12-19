@@ -10,6 +10,12 @@
   <body>
     <header></header>
     <div class="cart-main">
+      <!-- 頁籤 -->
+      <div class="tabs d-flex">
+        <div class="cart-option">購物車(<span>2</span>)</div>
+        <div class="wishlist-option">Wishlist</div>
+      </div>
+      <div></div>
       <!-- 購物車內容 -->
       <div class="cart-content">
         <!-- 放進購物車的商品 -->
@@ -166,6 +172,55 @@
             <label for="home-delivery">宅配</label>
           </div>
         </div>
+        <!-- 選擇門市 -->
+        <div class="store-option">
+          <span>尚未選擇門市</span><button><a href="">選擇門市</a></button>
+        </div>
+        <div class="reminder">
+          <p>※ 提醒您 ：</p>
+          <p>
+            當包裹送達您指定之7-11門市時，隔日將會發送簡訊到貨通知。門市純取貨之訂單，收件人務必填寫與身分證上相符的姓名，並攜帶證件至門市領取包裹。
+          </p>
+        </div>
+      </div>
+      <!-- 結帳資訊 -->
+      <div class="sum">
+        <!-- 運費提醒 -->
+        <div class="shipping-reminder">
+          <p>Free Shipping</p>
+          <p>商品金額只差NT $ <span>579</span>即可享NT $ 2000免運</p>
+        </div>
+        <!-- 帳單各項總計 -->
+        <div class="payment-details">
+          <div class="d-flex justify-content-between">
+            <span>小計</span>
+            <div><span>NT$ </span><span>1421</span></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>加價購</span>
+            <div><span>NT$ </span><span>0</span></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>運費</span>
+            <div><span>NT$ </span><span>80</span></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>折價券</span>
+            <div><span>- NT$ </span><span>0</span></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>購物金</span>
+            <div><span>- NT$ </span><span>0</span></div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <span>總金額</span>
+            <div><span>NT$ </span><span>1501</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="next">
+        <button class="next-btn"><a href="">下一步</a></button>
       </div>
     </div>
     <script src="./carts.js"></script>
