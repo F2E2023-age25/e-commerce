@@ -53,10 +53,20 @@ header {
   display: none;
 }
 
+.favorite {
+  width: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   header {
     height: 100px;
     background-color: rgb(33, 187, 198);
+  }
+
+  .products-search {
+    width: 92%;
+    /* clac不起作用 */
+    /* width: calc(100% - ((80% -(80% * 90%)))); */
   }
 
   .list-mode {
