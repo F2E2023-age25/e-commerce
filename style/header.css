@@ -2,8 +2,6 @@ header {
   position: relative;
   height: 70px;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
-  /* display: flex; */
-  /* flex-direction:column; */
 }
 
 /* 手機版logo外層容器 */
@@ -21,7 +19,8 @@ header {
   height: 60px;
 }
 
-.header-logo-tab, .header-row2 {
+.header-logo-tab,
+.header-row2 {
   display: none;
 }
 
@@ -49,12 +48,12 @@ header {
 /* 漢堡選單 */
 .hamburger-list {
   width: 20rem;
-  position: sticky;
+  position: fixed;
   flex-direction: column;
-  left: 100vw;
+  right: -15%;
   z-index: 1000;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
-  display: none;
+  opacity: 0;
 }
 
 .hamburger-list.is-active {
@@ -70,12 +69,11 @@ header {
   border: 0px;
   background-color: #7b3027;
   margin: 10px auto;
-  
 }
 
 .btn-special a {
   text-decoration: none;
-  color: #F4F3EE;
+  color: #f4f3ee;
   font-size: 1rem;
   letter-spacing: 20%;
 }
@@ -86,7 +84,7 @@ header {
   align-items: center;
   width: 17rem;
   height: 45px;
-  background-color: #FFF;
+  background-color: #fff;
   margin: 10px auto;
   border: 0px;
   border-bottom: 1px solid #000;
@@ -101,7 +99,7 @@ header {
 }
 
 .hamburger-list-bottom {
-  background-color: #BCB8B1;
+  background-color: #bcb8b1;
   border-top: 2px solid rgba(138, 129, 124, 0.25);
   display: flex;
   justify-content: space-around;
@@ -140,6 +138,109 @@ header {
   padding: 0 10px;
 }
 
+.share-animation {
+  animation-name: share-animation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  /* display: flex;
+    justify-content: space-around;
+    align-items: center; */
+}
+
+@keyframes share-animation {
+  from {
+    right: -15%;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+    z-index: 20;
+  }
+}
+
+.share-animation-back {
+  animation-name: share-animation002;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes share-animation002 {
+  from {
+    right: 0%;
+    opacity: 1;
+    z-index: 20;
+  }
+  to {
+    right: -15%;
+    opacity: 0;
+  }
+}
+
+/* 購物車選單 */
+.cart-list {
+  width: 25rem;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  flex-direction: column;
+  /* right: -15%; */
+  z-index: 1000;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  /* opacity: 0; */
+  background-color: #fff;
+}
+
+.btn-close {
+  float: right;
+  border: 0;
+  background-color: #fff;
+  margin: 20px 30px 10px;
+}
+
+.products-list {
+  border-top: 1px solid #7b3027;
+  border-bottom: 1px solid #7b3027;
+  margin: 10px 30px;
+  padding: 20px;
+}
+
+.carts-product {
+  display: flex;
+  margin: 10px 0 20px 0;
+}
+
+.carts-product img {
+  width: 30%;
+}
+
+.product-details {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.product-details p {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.list-container {
+  clear: both;
+  display: flex;
+  flex-direction:column;
+}
+
+.btn-checkout {
+  border: 0px;
+  box-sizing: border-box;
+  background-color: #7b3027;
+  color: #f4f3ee;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 20px auto 30px auto;
+}
 
 @media screen and (min-width: 36rem) {
   header {
@@ -148,20 +249,24 @@ header {
   .header-logo {
     margin: 0 auto;
   }
-  .header-logo-mobile, .hamburger, .hamburger-list, .hamburger-list.is-active {
+  .header-logo-mobile,
+  .hamburger,
+  .hamburger-list,
+  .hamburger-list.is-active {
     display: none;
   }
-  .header-logo-tab, .header-row2 {
+  .header-logo-tab,
+  .header-row2 {
     display: flex;
   }
   .header-row2 {
     margin: 15px auto;
     justify-content: center;
     a {
-    text-decoration:none;
-    margin: 0 10px;
-    font-size: 1rem;
-    color: #7b3027;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
+      color: #7b3027;
     }
   }
 }
