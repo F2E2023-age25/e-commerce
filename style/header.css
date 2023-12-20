@@ -42,6 +42,7 @@ header {
   height: 25px;
   padding: 10px;
   margin: 5px 0;
+  color: #7b3027;
   cursor: pointer;
 }
 
@@ -51,7 +52,7 @@ header {
   position: fixed;
   flex-direction: column;
   right: -15%;
-  z-index: 1000;
+  z-index: 20;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
   opacity: 0;
 }
@@ -142,9 +143,6 @@ header {
   animation-name: share-animation;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
 }
 
 @keyframes share-animation {
@@ -179,15 +177,15 @@ header {
 
 /* 購物車選單 */
 .cart-list {
+  position: fixed;
   width: 25rem;
-  position: absolute;
   top: 0px;
-  right: 0px;
-  flex-direction: column;
-  /* right: -15%; */
+  right: -80%;
   z-index: 1000;
+  flex-direction: column;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
-  /* opacity: 0; */
+  /* display: none; */
+  opacity: 1;
   background-color: #fff;
 }
 
@@ -240,6 +238,40 @@ header {
   height: 30px;
   border-radius: 10px;
   margin: 20px auto 30px auto;
+}
+
+.cart-animation {
+  animation-name:cart-animation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cart-animation {
+  from {
+    right: -80%;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.cart-animation-back {
+  animation-name: cart-animation-back;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cart-animation-back {
+  from {
+    right: 0;
+    opacity: 1;
+  }
+  to {
+    right: -80%;
+    opacity: 0;
+  }
 }
 
 @media screen and (min-width: 36rem) {
