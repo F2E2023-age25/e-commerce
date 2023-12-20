@@ -37,14 +37,35 @@ const cart = document.querySelector(".cart-btn");
 const cartList = document.querySelector(".cart-list");
 const closeBtn = document.querySelector(".btn-close");
 
-cart.addEventListener("click", function(){
-  cartList.classList.add("cart-animation")
+cart.addEventListener("click", function () {
+  cartList.classList.add("cart-animation");
   cartList.classList.remove("cart-animation-back");
-})
+});
 
 closeBtn.addEventListener("click", function () {
   cartList.classList.add("cart-animation-back");
   cartList.classList.remove("cart-animation");
 });
 
-// logo hover到變色(用jQuery)
+// logo hover到變色
+
+//
+const product = document.querySelector(".products-list");
+productHTML = "";
+
+function productList(product) {
+  productHTML += `
+  <div class="carts-product">
+    <img src="./images/00_header/cart01.jpg" alt="">
+    <div class="product-details">
+    <p>霧光感透肌高領長版上衣</p>
+    <p>尺寸 <span>M</span></p>
+    <p>顏色 <span>白</span></p>
+    <p>數量 <span>1</span></p>
+    </div>
+  </div>
+  `;
+  return productHTML;
+}
+
+product.innerHTML = productList(product);
