@@ -1,3 +1,8 @@
+// 在網頁載入完成時顯示 memberInfo 的內容
+document.addEventListener("DOMContentLoaded", function () {
+  memberInfo.click(); // 模擬點擊 memberInfo 元素
+});
+
 // 使用 querySelector 選取了相應的元素
 const memberInfo = document.querySelector("#member-info");
 const rebate = document.querySelector("#rebate");
@@ -183,7 +188,127 @@ let rebateHTML = ` <div class="b">
 </div>
 </div>`;
 
-let orderTrackingHTML = `  `;
+let orderTrackingHTML = ` <div class="c">
+<div class="order">
+  <h2 class="active">待出貨</h2>
+  <div class="add-title">
+    <p class="overall-item">訂購日期</p>
+    <p class="overall-item2">訂單編號</p>
+    <p class="overall-item">處理進度</p>
+    <p class="overall-item">訂單金額</p>
+    <p class="overall-item">客服紀錄</p>
+    <p class="overall-item">取消/退貨</p>
+  </div>
+
+  <div class="every-order">
+    <div class="overall">
+      <div class="overall-item">
+        <h4 class="reduce">訂單日期：</h4>
+        <h4>2023/12/11</h4>
+      </div>
+      <div class="overall-item2">
+        <h4 class="reduce">訂單編號：</h4>
+        <h4>2023121100001</h4>
+      </div>
+
+      <!-- 在螢幕寬度大於576px時顯示這個 -->
+      <div class="distinguish-screen-l">
+        <div
+          class="overall-item"
+          style="align-items: center; display: none"
+          id="largeScreen"
+        >
+          <!-- <h4 style="white-space: nowrap;">撿貨中</h4> -->
+          <button class="account-detail reduce">取消訂單</button>
+        </div>
+      </div>
+
+      <div class="distinguish-screen-s">
+        <!-- 在螢幕寬度小於等於576px時顯示這個 -->
+        <div id="smallScreen">
+          <div class="rebate-item">
+            <h4 style="white-space: nowrap">訂單狀態：撿貨中</h4>
+            <button class="account-detail reduce">取消訂單</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="add overall-sub">
+        <div class="add-item" style="white-space: nowrap">
+          <h4 style="white-space: nowrap">撿貨中</h4>
+        </div>
+        <div>
+          <h4 style="margin-left: -7rem;">NT.1,501</h4>
+        </div>
+        <div class="add-item" style="white-space: nowrap">
+          <h4 style="margin-left: -12rem;">詢問/紀錄</h4>
+        </div>
+      </div>
+      <div class="add-item">
+        <button class="add-button">取消訂單</button>
+      </div>
+    </div>
+    <hr />
+
+    <div class="buy-title">
+      <p class="overall-item2">商品資訊</p>
+      <p class="overall-item">顏色</p>
+      <p class="overall-item">尺寸</p>
+      <p class="overall-item">數量</p>
+    </div>
+
+    <div class="buy-title2">
+      <p class="overall-item2" style="white-space: nowrap">
+        開襟坑條針織上衣
+      </p>
+      <p class="overall-item">米白</p>
+      <p class="overall-item">M</p>
+      <p class="overall-item">1</p>
+      <div class="overall-item">
+        <button class="add-button">再次購買</button>
+      </div>
+    </div>
+
+    <div class="buy-title2">
+      <p class="overall-item2" style="white-space: nowrap">
+        立體褶線直筒西裝裙
+      </p>
+      <p class="overall-item">米杏</p>
+      <p class="overall-item">M</p>
+      <p class="overall-item">1</p>
+      <div class="overall-item">
+        <button class="add-button">再次購買</button>
+      </div>
+    </div>
+
+    <hr />
+    <button class="account-detail add">查看完整訂單</button>
+    <div class="rebate-item">
+      <h3 class="reduce">訂單金額：1,501 元</h3>
+      <button class="account-detail reduce">查看完整訂單</button>
+    </div>
+  </div>
+</div>
+</div>`;
+// 在螢幕寬度大於576px時隱藏小螢幕的部分
+// if (window.innerWidth > 576) {
+//   document.getElementById("smallScreen").style.display = "none";
+//   document.getElementById("largeScreen").style.display = "flex";
+// } else {
+//   document.getElementById("smallScreen").style.display = "flex";
+//   document.getElementById("largeScreen").style.display = "none";
+// }
+
+// 監聽視窗大小變化事件，動態調整顯示內容
+// window.addEventListener("resize", function () {
+//   if (window.innerWidth > 576) {
+//     document.getElementById("smallScreen").style.display = "none";
+//     document.getElementById("largeScreen").style.display = "flex";
+//   } else {
+//     document.getElementById("smallScreen").style.display = "flex";
+//     document.getElementById("largeScreen").style.display = "none";
+//   }
+// });
 
 // 添加點擊事件監聽器
 memberInfo.addEventListener("click", function () {
