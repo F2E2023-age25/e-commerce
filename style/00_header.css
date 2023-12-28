@@ -1,7 +1,14 @@
-header {
+body {
   position: relative;
+}
+
+header {
+  position: sticky;
+  top: 0;
   height: 70px;
+  background-color: #f4f3ee;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  z-index: 2000;
 }
 
 /* 手機版logo外層容器 */
@@ -44,6 +51,7 @@ header {
   margin: 5px 0;
   color: #7b3027;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 /* 漢堡選單 */

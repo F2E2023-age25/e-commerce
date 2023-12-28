@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>clothing_e_commerce</title>
-    <link rel="stylesheet" href="./style/reset.css" />
-    <link rel="stylesheet" href="./style/footer.css" />
+    <link rel="stylesheet" href="./utils/reset.css" />
+    <link rel="stylesheet" href="./style/00_footer.css" />
   </head>
   <body>
     <!-- footer start -->

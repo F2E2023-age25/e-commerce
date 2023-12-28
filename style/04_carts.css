@@ -4,11 +4,6 @@ body {
   background-color: #f4f3ee;
 }
 
-header {
-  height: 70px;
-  background-color: brown;
-}
-
 p {
   margin: 0;
 }
@@ -170,8 +165,5 @@ input {
 
 /* 大於768px */
 @media screen and (min-width: 768px) {
-  header {
-    height: 100px;
-    background-color: rgb(33, 187, 198);
-  }
+  
 }

@@ -4,11 +4,6 @@ body {
   background-color: #f4f3ee;
 }
 
-header {
-  height: 70px;
-  background-color: brown;
-}
-
 .products-main {
   width: 90vw;
   background-color: #f4f3ee;
@@ -58,10 +53,6 @@ header {
 }
 
 @media screen and (min-width: 768px) {
-  header {
-    height: 100px;
-    background-color: rgb(33, 187, 198);
-  }
 
   .products-search {
     width: 92%;
