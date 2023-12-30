@@ -52,6 +52,10 @@ body {
   width: 1rem;
 }
 
+.main_class{
+  margin: 0.5rem;
+}
+
 @media screen and (min-width: 768px) {
 
   .products-search {

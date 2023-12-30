@@ -1,5 +1,18 @@
 <?php
-include('./utils/conn.php')
+include('./utils/conn.php');
+
+$query_RecCategory = "SELECT `category`.`category_id`, `category`.`category_main`, `category`.`category_sub`, COUNT(`product`.`pd_id`) AS `productNum`FROM `category` 
+LEFT JOIN `product` ON `category`.`category_id` = `product`.`category_id`
+GROUP BY `category`.`category_id`, `category`.`category_main`, `category`.`category_sub`
+ORDER BY `category`.`category_id` ASC";
+$Rec_Category = $db_link->query($query_RecCategory);
+$currentMainCategory = "";
+
+$query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
+ORDER BY `product`.`pd_id` ASC; ";
+
+$Rec_Product = $db_link->query($query_RecProduct);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +28,7 @@ include('./utils/conn.php')
 
 <body>
   <?php
-  require('./00_header.php')
+  require('./00_header.php');
   ?>
   <div class="products-main">
     <div class="products-search d-flex justify-content-end">
@@ -37,154 +50,51 @@ include('./utils/conn.php')
       <div class="product-list">
         <div class="center">
           <ul>
-            <li><a href="">上身</a></li>
-            <li><a href="">　　　秋季針織</a></li>
-            <li><a href="">　　　各式襯衫</a></li>
-            <li><a href="">　　　好多外套</a></li>
-            <li><a href="">　　　冬季長袖</a></li>
-            <li><a href="">　　　都是套裝</a></li>
-            <li><a href="">　　　時尚連身</a></li>
-            <li><a href="">　　　仙女洋裝</a></li>
-            <li><a href="">　　　夏季短袖</a></li>
-            <li><a href="">　　　涼感背心</a></li>
-            <li><a href="">　　　舒適內衣</a></li>
+            <?php while ($row_RecCategory = $Rec_Category->fetch_assoc()) { ?>
+              <div class="main_class">
+                <!-- 檢查是否是新的主類別，如果是，則顯示主類別名稱 -->
+                <?php
+                if ($currentMainCategory != $row_RecCategory['category_main']) {
+                  echo "<br>";
+                  echo "<li><a href='product.php'>" . $row_RecCategory['category_main'] . "</a></li>";
+                  $currentMainCategory = $row_RecCategory['category_main'];
+                }
+                ?>
+              </div>
+              <li>　　　<a href="product.php">
+                  <?php echo $row_RecCategory['category_sub']; ?>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
-          <ul>
-            <li><a href="">下身</a></li>
-            <li><a href="">　　　修身長褲</a></li>
-            <li><a href="">　　　辣妹短褲</a></li>
-            <li><a href="">　　　優雅裙類</a></li>
-            <li><a href="">　　　舒適內褲</a></li>
-          </ul>
-          <ul>
-            <li><a href="">飾品</a></li>
-            <li><a href="">　　　耳飾耳飾</a></li>
-            <li><a href="">　　　戒指戒指</a></li>
-            <li><a href="">　　　項鍊項鍊</a></li>
-            <li><a href="">　　　髮飾髮飾</a></li>
-          </ul>
-          <ul>
-            <li><a href="">配件</a></li>
-            <li><a href="">　　　包包包包</a></li>
-            <li><a href="">　　　帽子帽子</a></li>
-            <li><a href="">　　　眼鏡眼鏡</a></li>
-            <li><a href="">　　　圍巾圍巾</a></li>
-            <li><a href="">　　　皮帶皮帶</a></li>
-            <li><a href="">　　　襪子襪子</a></li>
-            <li><a href="">　　　鞋子鞋子</a></li>
-          </ul>
+
         </div>
       </div>
       <div class="what01">
         <div class="what02 d-flex flex-wrap">
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
+          <!-- SSR -->
+          <?php while ($row_RecProduct = $Rec_Product->fetch_assoc()) { ?>
+            <div class="product">
+              <img src="<?php
+                        echo $row_RecProduct['image_path_main'];
+                        ?>" alt="" />
+              <div class="d-flex justify-content-between mt-2 mb-4">
+                <div class="product-text">
+                  <a href="" class="item-name">
+                    <?php echo $row_RecProduct['pd_name']; ?>
+                  </a>
+                  <p class="price">
+                    <span><?php echo $row_RecProduct['color_name']; ?></span>
+                    &emsp;$ <?php echo $row_RecProduct['pd_price']; ?> 元
+                  </p>
+                </div>
+                <div class="favorite">
+                  <img src="./icon_collect.png" alt="" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="product">
-            <img src="./images/02_products/product01.jpg" alt="" />
-            <div class="d-flex justify-content-between">
-              <div class="product-text">
-                <a href="" class="item-name">清霧紗感透肌小尖領襯衫</a>
-                <p class="price">NT.590</p>
-              </div>
-              <div class="favorite">
-                <img src="./icon_collect.png" alt="" />
-              </div>
-            </div>
-          </div>
+          <?php } ?>
+
         </div>
       </div>
     </div>
