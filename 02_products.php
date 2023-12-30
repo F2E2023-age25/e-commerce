@@ -21,7 +21,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>SHINJIN</title>
   <link rel="stylesheet" href="./utils/bootstrap.min.css" />
   <link rel="stylesheet" href="./style/02_products.css" />
 </head>
@@ -34,10 +34,8 @@ $Rec_Product = $db_link->query($query_RecProduct);
     <div class="products-search d-flex justify-content-end">
       <!-- 清單列表模式 -->
       <div class="list-mode d-flex">
-        <div>img1</div>
-        <div>img2</div>
-        <!-- <img src="" alt=""> -->
-        <!-- <img src="" alt=""> -->
+        <img class="mode-icon" src="./images/00_icon/col_1_gray.svg" alt="">
+        <img class="mode-icon" src="./images/00_icon/col_2_gray.svg" alt="">
       </div>
       <!-- 排序、進階功能 -->
       <div class="search-function d-flex">
@@ -75,12 +73,12 @@ $Rec_Product = $db_link->query($query_RecProduct);
           <!-- SSR -->
           <?php while ($row_RecProduct = $Rec_Product->fetch_assoc()) { ?>
             <div class="product">
-              <img src="<?php
-                        echo $row_RecProduct['image_path_main'];
-                        ?>" alt="" />
+              <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>">
+                <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
+              </a>
               <div class="d-flex justify-content-between mt-2 mb-4">
                 <div class="product-text">
-                  <a href="" class="item-name">
+                  <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>" class="item-name">
                     <?php echo $row_RecProduct['pd_name']; ?>
                   </a>
                   <p class="price">

@@ -64,7 +64,7 @@
     </div>
     <!-- 平板版navbar選單 -->
     <div class="header-row2">
-      <a href="">最新商品</a>
+      <a href="./06_wishlist.php">收藏清單</a>
       <p>|</p>
       <a href="">上身</a>
       <p>|</p>

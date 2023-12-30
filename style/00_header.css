@@ -61,6 +61,7 @@ header {
   flex-direction: column;
   right: -15%;
   z-index: 20;
+  background-color: #f4f3ee;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
   opacity: 0;
 }
@@ -302,11 +303,30 @@ header {
   .header-row2 {
     margin: 15px auto;
     justify-content: center;
-    a {
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 1rem;
-      color: #7b3027;
-    }
+  }
+
+  .header-row2 a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    color: #7b3027;
+    position: relative;
+    transition-duration: 1s;
+    display: inline-block;
+  }
+
+  .header-row2 a:hover {
+  color: #bcb8b1;
+  font-weight: 600;
+  position: absolute;
+  bottom: -20px;
+  display: inline-block;
+  content: "";
+  width: 50px;
+  height: 1vh;
+  background-color: #7b3027;
+  left: 50%;
+  transform: translateX(-50%);
   }
 }
+

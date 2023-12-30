@@ -10,7 +10,8 @@ body {
   margin: 0 auto;
 }
 
-.list-mode div {
+.mode-icon {
+  width: 20px;
   margin: 10px;
   cursor: pointer;
 }
@@ -54,6 +55,11 @@ body {
 
 .main_class{
   margin: 0.5rem;
+}
+
+li a:hover {
+  color: #7b302b;
+  font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {
