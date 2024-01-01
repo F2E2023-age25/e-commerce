@@ -8,9 +8,21 @@ ORDER BY `category`.`category_id` ASC";
 $Rec_Category = $db_link->query($query_RecCategory);
 $currentMainCategory = "";
 
-$query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
-INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
-ORDER BY `product`.`pd_id` ASC; ";
+// 從 URL 中擷取 category_id，如果不存在，則使用默認值（在這裡沒有預設）
+$category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
+
+// 如果 category_id 存在，則更新商品查詢以依據 URL 中的 category_id 進行篩選
+$query_RecProduct = $category_id
+    ? "SELECT * FROM `images` 
+        INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+        INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
+        WHERE `product`.`category_id` = $category_id
+        ORDER BY `product`.`pd_id` ASC"
+    : "SELECT * FROM `images` 
+        INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+        INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
+        ORDER BY `product`.`pd_id` ASC";
+
 
 $Rec_Product = $db_link->query($query_RecProduct);
 ?>
@@ -21,7 +33,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SHINJIN</title>
+  <title>`product`.`category_id` = 1</title>
   <link rel="stylesheet" href="./utils/bootstrap.min.css" />
   <link rel="stylesheet" href="./style/02_products.css" />
 </head>
@@ -34,8 +46,10 @@ $Rec_Product = $db_link->query($query_RecProduct);
     <div class="products-search d-flex justify-content-end">
       <!-- 清單列表模式 -->
       <div class="list-mode d-flex">
-        <img class="mode-icon" src="./images/00_icon/col_1_gray.svg" alt="">
-        <img class="mode-icon" src="./images/00_icon/col_2_gray.svg" alt="">
+        <div>img1</div>
+        <div>img2</div>
+        <!-- <img src="" alt=""> -->
+        <!-- <img src="" alt=""> -->
       </div>
       <!-- 排序、進階功能 -->
       <div class="search-function d-flex">
@@ -59,26 +73,26 @@ $Rec_Product = $db_link->query($query_RecProduct);
                 }
                 ?>
               </div>
-              <li>　　　<a href="products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
-                  <?php echo $row_RecCategory['category_sub']; ?>
-                </a>
+              <li class="category-sub">　　　<a href="products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
+  <?php echo $row_RecCategory['category_sub']; ?>
+</a>
               </li>
             <?php } ?>
           </ul>
 
         </div>
       </div>
-      <div class="what01">
+      <div class="what01 data-area">
         <div class="what02 d-flex flex-wrap">
           <!-- SSR -->
           <?php while ($row_RecProduct = $Rec_Product->fetch_assoc()) { ?>
             <div class="product">
-              <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>">
-                <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
-              </a>
+              <img src="<?php
+                        echo $row_RecProduct['image_path_main'];
+                        ?>" alt="" />
               <div class="d-flex justify-content-between mt-2 mb-4">
                 <div class="product-text">
-                  <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>" class="item-name">
+                  <a href="" class="item-name">
                     <?php echo $row_RecProduct['pd_name']; ?>
                   </a>
                   <p class="price">
@@ -116,6 +130,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
   <?php
   require('./00_footer.php')
   ?>
+  <!-- <script src="./js/02_products.js"></script> -->
 </body>
 
 </html>
