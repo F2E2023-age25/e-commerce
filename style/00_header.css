@@ -272,6 +272,51 @@ header {
   animation-fill-mode: forwards;
 }
 
+/* 搜尋框 */
+.search-container {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+
+.search-input {
+  height: 100%;
+  width: 0;
+  border: 0;
+  padding: 15px;
+  font-size: 24px;
+  background-color: #f4f3ee;
+  transition: width 0.8s ease;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.btn-search {
+  position: absolute;
+  /* inset四項為top right bottom left，auto等於不設置 */
+  inset: 0 auto auto 0;
+  width: 25px;
+  height: 100%;
+  transition: transform 0.8s ease;
+  border: 0px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f4f3ee;
+}
+
+.search-container.active .btn-search {
+  transform: translateX(160px);
+}
+
+.search-container.active .search-input {
+  width: 200px;
+}
+
+.search-container.active {
+  width: 210px;
+}
+
 @keyframes cart-animation-back {
   from {
     right: 0;
@@ -311,7 +356,7 @@ header {
     font-size: 1rem;
     color: #7b3027;
     position: relative;
-    transition-duration: 1s;
+    /* transition-duration: 1s; */
     display: inline-block;
   }
 
@@ -319,14 +364,14 @@ header {
   color: #bcb8b1;
   font-weight: 600;
   position: absolute;
-  bottom: -20px;
+  bottom: -10px;
   display: inline-block;
   content: "";
-  width: 50px;
-  height: 1vh;
+  width: 60px;
+  height: 0.5vh;
   background-color: #7b3027;
   left: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   }
 }
 

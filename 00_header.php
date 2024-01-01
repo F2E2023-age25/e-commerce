@@ -22,7 +22,12 @@
     </div>
     <!-- 手機版右側選單 -->
     <div class="header-right">
-      <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="btn-search">
+          <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
+        </button>
+      </div>
       <a href="">
         <img class="header-icon" src="./images/00_icon/icon_member.png" alt="會員中心" />
       </a>

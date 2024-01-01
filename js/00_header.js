@@ -69,3 +69,34 @@ function productList(product) {
 }
 
 product.innerHTML = productList(product);
+
+// 搜尋框動畫
+(() => {
+  const btnSearch = document.querySelector(".btn-search");
+  const searchInput = document.querySelector(".search-input");
+  const searchContainer = document.querySelector(".search-container");
+
+  const handleBtnClick = () => {
+    searchContainer.classList.add("active");
+    searchInput.focus();
+  };
+
+  const handleBlur = () => {
+    searchContainer.classList.remove("active");
+  };
+
+  const bindEvent = () => {
+    btnSearch.addEventListener("click", handleBtnClick);
+    searchInput.addEventListener("blur", handleBlur);
+  };
+
+  const init = () => {
+    bindEvent();
+  };
+  init()
+}) ()
+
+// function toggleSearch() {
+//   const container = document.querySelector('.search-container')
+//   container.classList.toggle('active')
+// }
