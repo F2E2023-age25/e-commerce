@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHINJIN</title>
+  <link rel="stylesheet" href="./utils/reset.css">
   <link rel="stylesheet" href="./utils/bootstrap.min.css" />
   <link rel="stylesheet" href="./style/04_carts.css" />
 </head>
@@ -80,9 +81,9 @@
     </div>
     <!-- 折價券 -->
     <div class="coupon">
-      <span>折價券代碼：</span><input type="text" />
+      <span>折價券代碼：</span><input class="carts-input" type="text" />
       <br />
-      <button><a href="">Coupon</a></button>
+      <button class="coupon-btn"><a href="">Coupon</a></button>
       <p>單筆訂單限折抵一張折價券</p>
     </div>
     <!-- 付款方式、運送方式 -->
@@ -92,23 +93,23 @@
         <p class="method-title">付款方式</p>
         <form action="" name="form1">
           <div>
-            <input type="checkbox" class="payment-input" id="credit-card" name="payment" onclick="return chk(this)" />
+            <input type="checkbox" class="carts-input payment-input" id="credit-card" name="payment" onclick="return chk(this)" />
             <label for="credit-card">信用卡線上刷卡</label>
           </div>
           <div>
-            <input type="checkbox" class="payment-input" id="cash-on-store-delivery" name="payment" onclick="return chk(this)" />
+            <input type="checkbox" class="carts-input payment-input" id="cash-on-store-delivery" name="payment" onclick="return chk(this)" />
             <label for="cash-on-store-delivery">超商貨到付款</label>
           </div>
           <div>
-            <input type="checkbox" class="payment-input" id="ATM" name="payment" onclick="return chk(this)" />
+            <input type="checkbox" class="carts-input payment-input" id="ATM" name="payment" onclick="return chk(this)" />
             <label for="ATM">ATM轉帳</label>
           </div>
           <div>
-            <input type="checkbox" class="payment-input" id="line-pay" name="payment" onclick="return chk(this)" />
+            <input type="checkbox" class="carts-input payment-input" id="line-pay" name="payment" onclick="return chk(this)" />
             <label for="line-pay">LINE Pay(可用LINE POINTS折抵)</label>
           </div>
           <div>
-            <input type="checkbox" class="payment-input" id="cash-on-home-delivery" name="payment" onclick="return chk(this)" />
+            <input type="checkbox" class="carts-input payment-input" id="cash-on-home-delivery" name="payment" onclick="return chk(this)" />
             <label for="cash-on-home-delivery">貨到付款(宅配)</label>
           </div>
         </form>
@@ -117,21 +118,21 @@
       <div class="delivery-method">
         <p class="method-title">運送方式</p>
         <div>
-          <input type="radio" class="delivery-input" id="7-eleven" name="delivery" />
+          <input type="radio" class="carts-input delivery-input" id="7-eleven" name="delivery" />
           <label for="7-eleven">7-11超商取貨(滿$2000免運)</label>
         </div>
         <div>
-          <input type="radio" class="delivery-input" id="family-mart" name="delivery" />
+          <input type="radio" class="carts-input delivery-input" id="family-mart" name="delivery" />
           <label for="family-mart">全家超商取貨(滿$2000免運)</label>
         </div>
         <div>
-          <input type="radio" class="delivery-input" id="home-delivery" name="delivery" />
+          <input type="radio" class="carts-input delivery-input" id="home-delivery" name="delivery" />
           <label for="home-delivery">宅配</label>
         </div>
       </div>
       <!-- 選擇門市 -->
       <div class="store-option">
-        <span>尚未選擇門市</span><button><a href="">選擇門市</a></button>
+        <span>尚未選擇門市</span><button class="choose-btn"><a href="">選擇門市</a></button>
       </div>
       <div class="reminder">
         <p>※ 提醒您 ：</p>

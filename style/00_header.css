@@ -32,7 +32,8 @@ header {
 }
 
 .header-right {
-  display: flex;
+  /* 原本設置felx，導致首頁LOGO被擋住無法點選，改成inline-flex即可點選到LOGO */
+  display: inline-flex;
   justify-content: end;
   position: sticky;
   height: 60px;
@@ -189,7 +190,7 @@ header {
   position: fixed;
   width: 25rem;
   top: 0px;
-  right: -80%;
+  right: -90%;
   z-index: 1000;
   flex-direction: column;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
@@ -238,6 +239,10 @@ header {
   flex-direction:column;
 }
 
+.a-checkout {
+  margin: 20px auto 30px auto;
+}
+
 .btn-checkout {
   border: 0px;
   box-sizing: border-box;
@@ -257,7 +262,7 @@ header {
 
 @keyframes cart-animation {
   from {
-    right: -80%;
+    right: -90%;
     opacity: 0;
   }
   to {
@@ -323,7 +328,7 @@ header {
     opacity: 1;
   }
   to {
-    right: -80%;
+    right: -90%;
     opacity: 0;
   }
 }
@@ -355,23 +360,6 @@ header {
     margin: 0 10px;
     font-size: 1rem;
     color: #7b3027;
-    position: relative;
-    /* transition-duration: 1s; */
-    display: inline-block;
-  }
-
-  .header-row2 a:hover {
-  color: #bcb8b1;
-  font-weight: 600;
-  position: absolute;
-  bottom: -10px;
-  display: inline-block;
-  content: "";
-  width: 60px;
-  height: 0.5vh;
-  background-color: #7b3027;
-  left: 50%;
-  /* transform: translateX(-50%); */
   }
 }
 

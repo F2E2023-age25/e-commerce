@@ -16,8 +16,10 @@
     <!-- logo -->
     <div class="header-row">
       <div class="header-logo">
-        <img class="header-logo-mobile" src="./images/00_icon/icon_mobile.png" alt="" />
-        <img class="header-logo-tab" src="./images/00_icon/icon_tab.png" alt="" />
+        <a href="./index_.php">
+          <img class="header-logo-mobile" src="./images/00_icon/icon_mobile.png" alt="" />
+          <img class="header-logo-tab" src="./images/00_icon/icon_tab.png" alt="" />
+        </a>
       </div>
     </div>
     <!-- 手機版右側選單 -->
@@ -28,7 +30,7 @@
           <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
         </button>
       </div>
-      <a href="">
+      <a href="./03_member.php">
         <img class="header-icon" src="./images/00_icon/icon_member.png" alt="會員中心" />
       </a>
       <img class="header-icon cart-btn" src="./images/00_icon/icon_cart.png" alt="購物車" />
@@ -44,7 +46,9 @@
         <div class="products-list">
           <!-- 商品資訊 -->
         </div>
-        <button class="btn-checkout">結帳</button>
+        <a class="a-checkout" href="./04_carts.php">
+          <button class="btn-checkout">結帳</button>
+        </a>
       </div>
     </div>
     <div class="hamburger-list">
@@ -54,17 +58,17 @@
         <button class="btn-special"><a href="">特別企劃</a></button>
       </div>
       <div>
-        <button class="btn-list"><a href="">全部商品</a></button>
+        <button class="btn-list"><a href="./02_products.php">全部商品</a></button>
         <button class="btn-list"><a href="">品牌故事</a></button>
         <button class="btn-list"><a href="">購物說明</a></button>
       </div>
       <div class="hamburger-list-bottom">
         <div class="t">
           <img src="./images/00_icon/icon_member.png" alt="">
-          <a href="">會員中心</a>
+          <a href="./03_member.php">會員中心</a>
         </div>
         <p>|</p>
-        <div class="t"><img src="./images/00_icon/icon_cart.png" alt=""><a href="">購物車</a></div>
+        <div class="t"><img src="./images/00_icon/icon_cart.png" alt=""><a href="./04_carts.php">購物車</a></div>
       </div>
     </div>
     <!-- 平板版navbar選單 -->

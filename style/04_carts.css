@@ -52,7 +52,6 @@ p {
 
 .product-img {
   max-width: 30%;
-  
 }
 
 .cart-content {
@@ -72,19 +71,16 @@ select {
   width: 100px;
 }
 
-button {
+.next-time-btn, .delete-btn, .coupon-btn, .choose-btn, .next-btn {
   border: 1px solid #7B302B;
+  padding: 5px 30px;
+  margin: 10px;
 }
 
 a {
   text-decoration: none;
   color: #7B302B;
   font-size: 1rem;
-}
-
-button {
-  padding: 5px 30px;
-  margin: 10px;
 }
 
 .delete-btn {
@@ -99,7 +95,7 @@ button {
   margin: 30px;
 }
 
-input {
+.carts-input {
   border: none;
   border-bottom: 1px solid #000;
   outline: none;
