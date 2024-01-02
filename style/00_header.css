@@ -236,7 +236,7 @@ header {
 .list-container {
   clear: both;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 }
 
 .a-checkout {
@@ -255,7 +255,7 @@ header {
 }
 
 .cart-animation {
-  animation-name:cart-animation;
+  animation-name: cart-animation;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
@@ -279,10 +279,13 @@ header {
 
 /* 搜尋框 */
 .search-container {
+  display: flex;
+  justify-content: end;
   position: relative;
   height: 50px;
   width: 50px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .search-input {
@@ -291,35 +294,55 @@ header {
   border: 0;
   padding: 15px;
   font-size: 24px;
-  background-color: #f4f3ee;
-  transition: width 0.8s ease;
+  transition: width 1.2s reverse;
   border-radius: 20px;
   box-sizing: border-box;
 }
 
 .btn-search {
-  position: absolute;
-  /* inset四項為top right bottom left，auto等於不設置 */
-  inset: 0 auto auto 0;
-  width: 25px;
+  /* position: absolute; */
+  /* inset四項為top right bottom left的位置寫在一起，auto等於不設置 */
+  /* inset: 0 auto auto 0; */
+  width: 50px;
   height: 100%;
-  transition: transform 0.8s ease;
+  transition: transform 1.2s reverse;
   border: 0px;
+  left: 0px;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f4f3ee;
 }
 
-.search-container.active .btn-search {
+/* .search-container.active .btn-search {
   transform: translateX(160px);
-}
+} */
 
 .search-container.active .search-input {
-  width: 200px;
+  animation-name: widthdiv;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
 }
 
 .search-container.active {
-  width: 210px;
+  animation-name: Bigwidthdiv;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes widthdiv {
+  from {
+    width: 0;
+  }
+  to {
+    width: 185px;
+  }
+}
+@keyframes Bigwidthdiv {
+  from {
+    width: 50px;
+  }
+  to {
+    width: 235px;
+  }
 }
 
 @keyframes cart-animation-back {
@@ -362,4 +385,3 @@ header {
     color: #7b3027;
   }
 }
-

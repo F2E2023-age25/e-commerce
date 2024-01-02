@@ -25,8 +25,8 @@
     <!-- 手機版右側選單 -->
     <div class="header-right">
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="btn-search">
+        <input type="text" class="search-input" placeholder="Search..." name="keyword">
+        <button class="btn-search" type="submit">
           <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
         </button>
       </div>
