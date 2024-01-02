@@ -66,7 +66,7 @@ $row_RecProduct = $Rec_Product->fetch_assoc();
                 }
                 ?>
               </div>
-              <li>　　　<a href="product.php">
+              <li>　　　<a href="products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
                   <?php echo $row_RecCategory['category_sub']; ?>
                 </a>
               </li>

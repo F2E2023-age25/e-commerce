@@ -19,8 +19,9 @@ $pd_size = "未知尺寸";
 $pd_price = "未知價格";
 $image_path = "未知圖片路徑";
 
+
 // 撈取資料庫商品名稱start
-if(isset($pd_id)){
+if(isset($pd_id) && $pd_id != 0){
   $pdNameQuery = "SELECT pd_name FROM product WHERE pd_id = '$pd_id'";
 
     // 確認 $db_link 是否被正確初始化
@@ -48,7 +49,7 @@ if(isset($pd_id)){
 
 
 // 撈取資料庫商品顏色start
-if(isset($pd_id)){
+if(isset($pd_id) && $pd_id != 0){
   $colorIdQuery = "SELECT color_id FROM product WHERE pd_id = '$pd_id'";
 
     // 確認 $db_link 是否被正確初始化
@@ -92,7 +93,7 @@ if(isset($pd_id)){
 
 
 // 撈取資料庫商品尺寸start
-if(isset($pd_id)){
+if(isset($pd_id) && $pd_id != 0){
   $pdSizeQuery = "SELECT pd_size FROM product WHERE pd_id = '$pd_id'";
 
     // 確認 $db_link 是否被正確初始化
@@ -120,7 +121,7 @@ if(isset($pd_id)){
 
 
 // 撈取資料庫商品價格start
-if(isset($pd_id)){
+if(isset($pd_id) && $pd_id != 0){
   $pdPriceQuery = "SELECT pd_price FROM product WHERE pd_id = '$pd_id'";
 
     // 確認 $db_link 是否被正確初始化
@@ -148,7 +149,7 @@ if(isset($pd_id)){
 
 
 // 撈取資料庫商品照片路徑start
-if(isset($pd_id)){
+if(isset($pd_id) && $pd_id != 0){
   $imagePathQuery = "SELECT image_path_main FROM images WHERE images_id = '$pd_id'";
 
     // 確認 $db_link 是否被正確初始化
@@ -203,6 +204,20 @@ if(isset($pd_id)){
     <div></div>
     <!-- 購物車內容 -->
     <div class="cart-content">
+
+    <?php
+      // 添加条件判断，如果 $pd_id 为 0 或者为空，显示提示信息
+      if ($pd_id == 0 || empty($pd_id)) {
+        echo "<br>"; 
+        echo "<br>"; 
+        echo "<br>"; 
+        echo "<p style='text-align: center;'>購物車目前尚無商品</p>";
+        echo "<br>";
+        echo "<br>"; 
+        echo "<br>"; 
+      } else {
+      ?>
+
       <!-- 放進購物車的商品 -->
       <div class="cart-product">
         <div class="product-info d-flex">
@@ -233,33 +248,9 @@ if(isset($pd_id)){
         <a class="next-time-btn" href="">下次買</a>
         <button class="delete-btn">X</button>
       </div>
-      <div class="cart-product">
-        <div class="product-info d-flex">
-          <img class="product-img" src="./images/03_cart/cart02.jpg" alt="" />
-          <div class="product-details">
-            <p class="product-name">休閒感抽身直筒裙</p>
-            <p class="product-number">MG1A001970903</p>
-            <br />
-            <span>顏色：</span><span class="product-color">米白</span><br />
-            <span>尺寸：</span><span class="product-size">M</span><br />
-            <span>單價：NT.</span><span class="product-price">890</span><br />
-            <span>數量：</span>
-            <select name="number" id="number">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <br />
-            <br />
-            <span>折扣價：NT.</span><span class="discount-price">890</span><br />
-            <span>小計：　NT.</span><span class="final-price">890</span>
-          </div>
-        </div>
-        <button><a class="next-time-btn" href="">下次買</a></button>
-        <button class="delete-btn">X</button>
-      </div>
+      <?php
+      }
+      ?>
     </div>
     <!-- 折價券 -->
     <div class="coupon">
