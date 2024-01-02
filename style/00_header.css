@@ -283,18 +283,25 @@ header {
   justify-content: end;
   position: relative;
   height: 50px;
-  width: 50px;
+  width: 220px;
   overflow: hidden;
   box-sizing: border-box;
 }
 
+form {
+  margin: 0;
+  padding: 0;
+  width: 210px;
+}
+
 .search-input {
   height: 100%;
-  width: 0;
+  width: 150px;
+  height: 45px;
   border: 0;
   padding: 15px;
-  font-size: 24px;
-  transition: width 1.2s reverse;
+  font-size: 16px;
+  /* transition: width 1.2s reverse; */
   border-radius: 20px;
   box-sizing: border-box;
 }
@@ -305,7 +312,7 @@ header {
   /* inset: 0 auto auto 0; */
   width: 50px;
   height: 100%;
-  transition: transform 1.2s reverse;
+  /* transition: transform 1.2s reverse; */
   border: 0px;
   left: 0px;
   border-radius: 20px;
@@ -317,7 +324,7 @@ header {
   transform: translateX(160px);
 } */
 
-.search-container.active .search-input {
+/* .search-container.active .search-input {
   animation-name: widthdiv;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
@@ -333,17 +340,17 @@ header {
     width: 0;
   }
   to {
-    width: 185px;
+    width: 235px;
   }
 }
 @keyframes Bigwidthdiv {
   from {
-    width: 50px;
+    width: 90px;
   }
   to {
-    width: 235px;
+    width: 275px;
   }
-}
+} */
 
 @keyframes cart-animation-back {
   from {
@@ -355,6 +362,7 @@ header {
     opacity: 0;
   }
 }
+
 
 @media screen and (min-width: 36rem) {
   header {

@@ -1,3 +1,20 @@
+<?php
+include('./utils/conn.php');
+
+// 如果拿到search bar輸入的keyword，則顯示相關搜尋結果
+if (isset($_GET['keyword']) && $_GET['keyword'] != "") {
+  $keyword = $_GET['keyword'];
+  $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id` WHERE pd_name LIKE '%{$keyword}%'";
+} else {
+  $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
+ORDER BY `product`.`pd_id` ASC; ";
+};
+
+$Rec_Product = $db_link->query($query_RecProduct);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,12 +41,16 @@
     </div>
     <!-- 手機版右側選單 -->
     <div class="header-right">
+      <!-- 搜尋框start -->
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search..." name="keyword">
-        <button class="btn-search" type="submit">
-          <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
-        </button>
+        <form action="./02_products.php" method="get">
+          <input type="text" class="search-input" placeholder="Search..." name="keyword">
+          <button class="btn-search" type="submit">
+            <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />
+          </button>
+        </form>
       </div>
+      <!-- 搜尋框end -->
       <a href="./03_member.php">
         <img class="header-icon" src="./images/00_icon/icon_member.png" alt="會員中心" />
       </a>

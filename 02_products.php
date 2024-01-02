@@ -8,11 +8,18 @@ ORDER BY `category`.`category_id` ASC";
 $Rec_Category = $db_link->query($query_RecCategory);
 $currentMainCategory = "";
 
-$query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
-INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
-ORDER BY `product`.`pd_id` ASC; ";
+// 如果拿到search bar輸入的keyword，則顯示相關搜尋結果
+// if(isset($_GET['keyword']) && $_GET['keyword'] != "") {
+//   $keyword = $_GET['keyword'];
+//   $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+// INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id` WHERE pd_name LIKE '%{$keyword}%'";
+// } else {
+//   $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
+// INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
+// ORDER BY `product`.`pd_id` ASC; ";
+// };
 
-$Rec_Product = $db_link->query($query_RecProduct);
+// $Rec_Product = $db_link->query($query_RecProduct);
 ?>
 
 <!DOCTYPE html>
