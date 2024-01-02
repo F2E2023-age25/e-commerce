@@ -1,3 +1,183 @@
+<?php
+include('./utils/conn.php');
+
+//購物車初始化，0代表無限。
+// $cart=new Cart([
+//   'cartMaxItem'=>0,
+//   'itemMaxQuantity'=>0,
+//   'useCookie'=>false,
+// ]);
+
+// 設定pd_id變數，從URL參數綁定pd_id
+// 如果 $_GET['id'] 已經被設定，將 $pd_id 設為 $_GET['id'] 的值。
+// 如果 $_GET['id'] 沒有被設定（或為 null），則將 $pd_id 設為 0。
+$pd_id = isset($_GET['id']) ? $_GET['id'] : 0;
+
+$color_name = "未知顏色";
+$pd_name = "未知商品名稱";
+$pd_size = "未知尺寸";
+$pd_price = "未知價格";
+$image_path = "未知圖片路徑";
+
+// 撈取資料庫商品名稱start
+if(isset($pd_id)){
+  $pdNameQuery = "SELECT pd_name FROM product WHERE pd_id = '$pd_id'";
+
+    // 確認 $db_link 是否被正確初始化
+    if($db_link->connect_error){
+
+      // 如果 $db_link 未正確初始化，處理錯誤
+      echo "資料庫連接錯誤: " . $db_link->connect_error;
+
+    } else {
+      $pdNameResult = $db_link->query($pdNameQuery);
+      if($pdNameResult){
+
+        //如果查詢成功
+        $pdNameRow = $pdNameResult->fetch_assoc();
+        $pd_name=$pdNameRow['pd_name'];
+    
+      } else {
+        //如果商品查詢失敗，處理錯誤
+        echo "商品查詢失敗".$db_link->error;
+      }
+    }
+}
+// 撈取資料庫商品名稱end
+
+
+
+// 撈取資料庫商品顏色start
+if(isset($pd_id)){
+  $colorIdQuery = "SELECT color_id FROM product WHERE pd_id = '$pd_id'";
+
+    // 確認 $db_link 是否被正確初始化
+    if($db_link->connect_error){
+
+      // 如果 $db_link 未正確初始化，處理錯誤
+      echo "資料庫連接錯誤: " . $db_link->connect_error;
+
+    } else {
+      $colorIdResult = $db_link->query($colorIdQuery);
+      if($colorIdResult){
+
+        //如果查詢成功
+        $colorIdRow = $colorIdResult->fetch_assoc();
+        $color_id=$colorIdRow['color_id'];
+    
+        //再到color資料表中查詢對應color_id的color_name
+        $color_query="SELECT color_name FROM color WHERE color_id = '$color_id'";
+        $color_result=$db_link->query($color_query);
+    
+        if($color_result){
+          //如果查詢成功
+          $color_row=$color_result->fetch_assoc();
+          $color_name=$color_row['color_name'];
+    
+          //現在$color_name包含了對應pd_id的顏色名稱
+          // echo "$color_name";
+
+        } else {
+          //如果顏色查詢失敗，處理錯誤
+          echo "顏色查詢失敗".$db_link->error;
+        }
+      } else {
+        //如果商品查詢失敗，處理錯誤
+        echo "商品查詢失敗".$db_link->error;
+      }
+    }
+}
+// 撈取資料庫商品顏色end
+
+
+
+// 撈取資料庫商品尺寸start
+if(isset($pd_id)){
+  $pdSizeQuery = "SELECT pd_size FROM product WHERE pd_id = '$pd_id'";
+
+    // 確認 $db_link 是否被正確初始化
+    if($db_link->connect_error){
+
+      // 如果 $db_link 未正確初始化，處理錯誤
+      echo "資料庫連接錯誤: " . $db_link->connect_error;
+
+    } else {
+      $pdSizeResult = $db_link->query($pdSizeQuery);
+      if($pdSizeResult){
+
+        //如果查詢成功
+        $pdSizeRow = $pdSizeResult->fetch_assoc();
+        $pd_size=$pdSizeRow['pd_size'];
+    
+      } else {
+        //如果商品查詢失敗，處理錯誤
+        echo "商品查詢失敗".$db_link->error;
+      }
+    }
+}
+// 撈取資料庫商品尺寸end
+
+
+
+// 撈取資料庫商品價格start
+if(isset($pd_id)){
+  $pdPriceQuery = "SELECT pd_price FROM product WHERE pd_id = '$pd_id'";
+
+    // 確認 $db_link 是否被正確初始化
+    if($db_link->connect_error){
+
+      // 如果 $db_link 未正確初始化，處理錯誤
+      echo "資料庫連接錯誤: " . $db_link->connect_error;
+
+    } else {
+      $pdPriceResult = $db_link->query($pdPriceQuery);
+      if($pdPriceResult){
+
+        //如果查詢成功
+        $pdPriceRow = $pdPriceResult->fetch_assoc();
+        $pd_price=$pdPriceRow['pd_price'];
+    
+      } else {
+        //如果商品查詢失敗，處理錯誤
+        echo "商品查詢失敗".$db_link->error;
+      }
+    }
+}
+// 撈取資料庫商品價格end
+
+
+
+// 撈取資料庫商品照片路徑start
+if(isset($pd_id)){
+  $imagePathQuery = "SELECT image_path_main FROM images WHERE images_id = '$pd_id'";
+
+    // 確認 $db_link 是否被正確初始化
+    if($db_link->connect_error){
+
+      // 如果 $db_link 未正確初始化，處理錯誤
+      echo "資料庫連接錯誤: " . $db_link->connect_error;
+
+    } else {
+      $imagePathResult = $db_link->query($imagePathQuery);
+      if($imagePathResult){
+
+        //如果查詢成功
+        $imagePathRow = $imagePathResult->fetch_assoc();
+        $image_path=$imagePathRow['image_path_main'];
+    
+      } else {
+        //如果商品查詢失敗，處理錯誤
+        echo "商品查詢失敗".$db_link->error;
+      }
+    }
+}
+// 撈取資料庫商品照片路徑end
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,29 +206,31 @@
       <!-- 放進購物車的商品 -->
       <div class="cart-product">
         <div class="product-info d-flex">
-          <img class="product-img" src="./images/03_cart/cart01.jpg" alt="" />
+          <img class="product-img" src="<?php echo $image_path; ?>" alt="" />
           <div class="product-details">
-            <p class="product-name">開襟坑條針織上衣</p>
-            <p class="product-number">MG1A001970903</p>
+            <p class="product-name">名稱：<?php echo $pd_name; ?></p>
+            <p class="product-number">編號：#<?php echo $pd_id; ?></p>
             <br />
-            <span>顏色：</span><span class="product-color">米白</span><br />
-            <span>尺寸：</span><span class="product-size">M</span><br />
-            <span>單價：NT.</span><span class="product-price">590</span><br />
+            <span>顏色：</span><span class="product-color"><?php echo $color_name; ?></span><br />
+            <span>尺寸：</span><span class="product-size"><?php echo $pd_size; ?></span><br />
+            <span>單價：NT.</span><span class="product-price"><?php echo $pd_price; ?></span><br />
             <span>數量：</span>
             <select name="number" id="number">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+
+            <!-- \" 表示一个雙引號字符 -->
+              <?php
+              for($i=1;$i<=10;$i++){
+                echo "<option value=\"$i\">$i</option>";
+              }
+              ?>
             </select>
             <br />
             <br />
-            <span>折扣價：NT.</span><span class="discount-price">531</span><br />
-            <span>小計：　NT.</span><span class="final-price">531</span>
+            <span>折扣價：NT.</span><span class="discount-price"><?php echo $pd_price; ?></span><br />
+            <span>小計：　NT.</span><span class="final-price"><?php echo $pd_price; ?></span>
           </div>
         </div>
-        <button><a class="next-time-btn" href="">下次買</a></button>
+        <a class="next-time-btn" href="">下次買</a>
         <button class="delete-btn">X</button>
       </div>
       <div class="cart-product">

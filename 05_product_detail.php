@@ -106,7 +106,7 @@ $row_RecProduct = $Rec_Product->fetch_assoc();
                     <option value="4">4</option>
                     <option value="5">5</option>
                   </select>
-                  <button class="btn-add-carts">加入購物車</button>
+                  <button class="btn-add-carts" onclick="addToCart()">加入購物車</button>
                   <div class="desc pd-desc mt-4">商品描述</div>
                   <div class="desc size-desc mt-2">尺寸指南</div>
                   <div class="desc maintain-desc mt-2">保養方式</div>
@@ -124,6 +124,26 @@ $row_RecProduct = $Rec_Product->fetch_assoc();
   <?php
   require('./00_footer.php')
   ?>
+
+<script>
+  function addToCart(){
+
+  // 獲取當前 URL
+  let currentUrl=window.location.href;
+
+  // 檢查 URL 中是否已包含參數? 如果已包含，就使用'?'作為分隔符，否則使用''。
+  let separator=currentUrl.includes('?')?'?':'';
+
+  // 將 PHP 變數轉換為 JSON 字符串
+  let pdIdJson = <?php echo json_encode($pd_id); ?>;
+
+  // 構建新的 URL，加入 id 參數
+  let newUrl = '04_carts.php' + separator + 'id='  + pdIdJson;
+
+  // 導航到新的 URL
+  window.location.href=newUrl;
+  }
+  </script>
 </body>
 
 </html>

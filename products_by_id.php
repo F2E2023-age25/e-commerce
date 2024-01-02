@@ -12,7 +12,7 @@ $currentMainCategory = "";
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
 // 如果 category_id 存在，則更新商品查詢以依據 URL 中的 category_id 進行篩選
-$query_RecProduct = $category_id
+$query_RecProduct_1 = $category_id
     ? "SELECT * FROM `images` 
         INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
         INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
@@ -24,7 +24,7 @@ $query_RecProduct = $category_id
         ORDER BY `product`.`pd_id` ASC";
 
 
-$Rec_Product = $db_link->query($query_RecProduct);
+$Rec_Product_1 = $db_link->query($query_RecProduct_1);
 ?>
 
 <!DOCTYPE html>
@@ -85,11 +85,11 @@ $Rec_Product = $db_link->query($query_RecProduct);
       <div class="what01 data-area">
         <div class="what02 d-flex flex-wrap">
           <!-- SSR -->
-          <?php while ($row_RecProduct = $Rec_Product->fetch_assoc()) { ?>
+          <?php while ($row_RecProduct = $Rec_Product_1->fetch_assoc()) { ?>
             <div class="product">
-              <img src="<?php
-                        echo $row_RecProduct['image_path_main'];
-                        ?>" alt="" />
+            <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>">
+                <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
+              </a>
               <div class="d-flex justify-content-between mt-2 mb-4">
                 <div class="product-text">
                   <a href="" class="item-name">
