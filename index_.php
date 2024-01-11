@@ -13,6 +13,11 @@
   <?php
   require('./00_header.php')
   ?>
+  <?php if (isset($_GET["errMsg"]) && ($_GET["errMsg"] == "1")) { 
+    $alert = "登入帳號或密碼錯誤！";
+    echo "<script type='text/javascript'>alert('$alert');</script>";
+  } ?>
+
   <div class="home-banner">
     <video src="./images/01_homepage/homepage-banner.mp4" autoplay="true" type="video/mp4" muted="true"></video>
   </div>

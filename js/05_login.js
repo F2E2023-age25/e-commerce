@@ -12,7 +12,8 @@ console.log(LoginRegister);
 let signInHTML = `
 <div class="login-container">
 <div class="login-register">
-        <form id="loginForm">
+        <form method="post" id="loginForm" action="">
+          
           <div class="input-container">
             <!-- <label for="username"></label> -->
             <div class="input-line">
@@ -38,14 +39,15 @@ let signInHTML = `
               />
             </div>
           </div>
-          <button type="button" onclick="login()">會員登入</button>
+          <button type="submit" onclick="login()">會員登入</button>
+          
           <div class="other-methods">
             <div class="social-icon">
               <img src="./icon/black/logo_ci_fb.png" alt="點選以使用fb帳號登入" />
               <img src="./icon/black/logo_sq_line.png" alt="點選以使用line帳號登入"/>
             </div>
             <div>
-              <p>忘記密碼</p>
+              <p class="cursor">忘記密碼</p>
             </div>
           </div>
         </form>

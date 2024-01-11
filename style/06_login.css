@@ -1,10 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #f4f3ee;
 }
 
@@ -14,8 +11,13 @@ body {
   border-radius: 5px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   /* text-align: start; */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  margin: 0 auto;
   line-height: 2rem; /* 設定每一列的高度 */
-  height: 600px;
+  height: 50vh;
   width: 300px;
   justify-content: center;
 }
@@ -106,4 +108,8 @@ button:hover {
 #loginMessage {
   margin-top: 10px;
   color: #dc3545;
+}
+
+.pointer {
+  cursor: pointer;
 }

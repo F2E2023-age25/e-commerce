@@ -51,7 +51,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
         </form>
       </div>
       <!-- 搜尋框end -->
-      <a href="./03_member.php">
+      <a href="./08_login.php">
         <img class="header-icon" src="./images/00_icon/icon_member.png" alt="會員中心" />
       </a>
       <img class="header-icon cart-btn" src="./images/00_icon/icon_cart.png" alt="購物車" />
@@ -86,7 +86,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
       <div class="hamburger-list-bottom">
         <div class="t">
           <img src="./images/00_icon/icon_member.png" alt="">
-          <a href="./03_member.php">會員中心</a>
+          <a href="./08_login.php">會員中心</a>
         </div>
         <p>|</p>
         <div class="t"><img src="./images/00_icon/icon_cart.png" alt=""><a href="./04_carts.php">購物車</a></div>
