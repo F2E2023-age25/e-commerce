@@ -94,7 +94,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
     </div>
     <!-- 平板版navbar選單 -->
     <div class="header-row2">
-      <a href="./06_wishlist.php">收藏清單</a>
+      <a href="./02_products.php">全部商品</a>
       <p>|</p>
       <a href="">上身</a>
       <p>|</p>
@@ -103,6 +103,8 @@ $Rec_Product = $db_link->query($query_RecProduct);
       <a href="">飾品</a>
       <p>|</p>
       <a href="">配件</a>
+      <p>|</p>
+      <a href="./06_wishlist.php">收藏清單</a>
     </div>
   </header>
   <!-- header end -->

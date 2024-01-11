@@ -18,14 +18,26 @@
   </div>
   <div class="home-category">
     <div class="home-category-left">
-      <img src="./images/01_homepage/bottoms.png" alt="">
-      <img src="./images/01_homepage/fittings.png" alt="">
-      <img src="./images/01_homepage/others.png" alt="">
+      <a href="./02_products.php">
+        <img src="./images/01_homepage/all.png" alt="">
+      </a>
+      <a href="">
+        <img src="./images/01_homepage/tops.png" alt="">
+      </a>
+      <a href="">
+        <img src="./images/01_homepage/accessories.png" alt="">
+      </a>
     </div>
     <div class="home-category-right">
-      <img src="./images/01_homepage/tops.png" alt="">
-      <img src="./images/01_homepage/accessories.png" alt="">
-      <img src="./images/01_homepage/new-products.png" alt="">
+      <a href="./06_wishlist.php">
+        <img src="./images/01_homepage/collection.png" alt="">
+      </a>
+      <a href="">
+        <img src="./images/01_homepage/bottoms.png" alt="">
+      </a>
+      <a href="">
+        <img src="./images/01_homepage/fittings.png" alt="">
+      </a>
     </div>
   </div>
   <?php

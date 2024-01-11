@@ -33,7 +33,7 @@ $Rec_Product_1 = $db_link->query($query_RecProduct_1);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>`product`.`category_id` = 1</title>
+  <title>商品分類</title>
   <link rel="stylesheet" href="./utils/bootstrap.min.css" />
   <link rel="stylesheet" href="./style/02_products.css" />
 </head>
@@ -73,7 +73,7 @@ $Rec_Product_1 = $db_link->query($query_RecProduct_1);
                 }
                 ?>
               </div>
-              <li class="category-sub">　　　<a href="products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
+              <li class="category-sub">　　　<a href="07_products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
   <?php echo $row_RecCategory['category_sub']; ?>
 </a>
               </li>

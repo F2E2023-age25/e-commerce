@@ -7,19 +7,6 @@ GROUP BY `category`.`category_id`, `category`.`category_main`, `category`.`categ
 ORDER BY `category`.`category_id` ASC";
 $Rec_Category = $db_link->query($query_RecCategory);
 $currentMainCategory = "";
-
-// 如果拿到search bar輸入的keyword，則顯示相關搜尋結果
-// if(isset($_GET['keyword']) && $_GET['keyword'] != "") {
-//   $keyword = $_GET['keyword'];
-//   $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
-// INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id` WHERE pd_name LIKE '%{$keyword}%'";
-// } else {
-//   $query_RecProduct = "SELECT * FROM `images` INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
-// INNER JOIN `color`ON `product`.`color_id` = `color`.`color_id`
-// ORDER BY `product`.`pd_id` ASC; ";
-// };
-
-// $Rec_Product = $db_link->query($query_RecProduct);
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +53,7 @@ $currentMainCategory = "";
                 }
                 ?>
               </div>
-              <li>　　　<a href="products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
+              <li><a href="07_products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
                   <?php echo $row_RecCategory['category_sub']; ?>
                 </a>
               </li>
