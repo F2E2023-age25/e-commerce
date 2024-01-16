@@ -456,11 +456,12 @@ $stmt->fetch();
 
       // 地址end
     </script>
-    <!--    <form class="logout-form" method="get" action="">-->
-    <a href="?logout=true">
-      <button class="button" type="submit">登出</button>
+
+    <!-- 登出按鈕 -->
+    <a href="?logout=true" id="a-logout">
+      <button class="button btn-logout" type="submit">登出</button>
     </a>
-    <!--    </form>-->
+
   </div>
 
 

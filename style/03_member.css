@@ -205,6 +205,33 @@ h4 {
   margin-bottom: 0.5rem;
 }
 
+#a-logout {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 50px;
+}
+
+.btn-logout {
+  background-color: #7b302b;
+  color: #f4f3ee;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 20%; /* 寬度是相對於父層 */
+  height: 35px;
+  border-radius: 10px; /* 設定圓角 */
+  display: flex; /* 使用 flexbox */
+  align-items: center; /* 將文字垂直居中 */
+  justify-content: center; /* 水平置中 */
+  margin: 1rem 0; /* 調整上邊距 */
+}
+
+.btn-logout:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: #f4f3ee;
+}
+
 @media (577px <= width) {
   /* add */
   /* add */
