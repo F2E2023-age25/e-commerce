@@ -32,7 +32,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     $_SESSION["loginMember"] = $userid;
     $_SESSION["memberLevel"] = $level;
     if($_SESSION["memberLevel"] == "member") {
-      header("Location:03_member.php");
+      header("Location:03_member.php?id=$userid");
     } else {
       header("Location:09_admin.php");
     }

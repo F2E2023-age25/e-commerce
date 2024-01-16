@@ -69,17 +69,19 @@ body {
   border: 1px solid #7b302b;
   background-color: #ffffff;
   color: #7b302b;
-  width: 8rem;
-  height: 3rem;
+  width: 10rem;
+  height: 2rem;
   margin: auto; /* 把按鈕置中 */
   /* margin-bottom: 2rem;  */
   /* 將底部距離設為3rem */
   margin-top: 5rem;
 }
+
 form {
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 100%;
 }
 
 .selects {
@@ -87,7 +89,7 @@ form {
   width: 100%;
   height: 2.5rem;
   margin-bottom: 0.3rem;
-  margin-top: 0.5rem;
+  margin-top: 0rem;
 }
 .select_city,
 .select_area {
@@ -99,11 +101,21 @@ form {
   width: 100%;
   height: 100%;
 }
+
+.select_city {
+  padding: 0 10px 0 0;
+}
+
+.label {
+  display: inline-block;
+  margin: 0.5rem 0 0 0;
+}
+
 input {
   box-sizing: border-box;
   padding: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 2rem;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -188,6 +200,11 @@ h4 {
 .distinguish-screen-l {
   display: flex;
 }
+
+#birthday {
+  margin-bottom: 0.5rem;
+}
+
 @media (577px <= width) {
   /* add */
   /* add */

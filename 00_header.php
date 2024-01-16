@@ -43,7 +43,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
     <div class="header-right">
       <!-- 搜尋框start -->
       <div class="search-container">
-        <form action="./02_products.php" method="get">
+        <form class="search-form" action="./02_products.php" method="get">
           <input type="text" class="search-input" placeholder="Search..." name="keyword">
           <button class="btn-search" type="submit">
             <img class="header-icon" src="./images/00_icon/icon_search.png" alt="搜尋" />

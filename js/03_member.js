@@ -15,6 +15,9 @@ console.log(rebate);
 console.log(orderTracking);
 console.log(dataArea);
 
+
+console.log(memberName)
+
 // 用變數方式設定要出現的內容
 let memberInfoHTML = `<div class="member-section">
 <!-- 會員資料start -->
@@ -22,7 +25,7 @@ let memberInfoHTML = `<div class="member-section">
   <h2 class="active">會員資料</h2>
   <form method="post" action="#">
     <!-- 表單數據將提交到當前頁面，不會導致頁面的刷新，而是觸發 JavaScript 函數或使用 AJAX 技術進行處理。 -->
-    <label for="username">會員姓名</label>
+    <label class="label" for="username">會員姓名</label>
     <!-- for="username" 屬性表示這個 <label> 與表單中 id="username" 的元素相關聯。 -->
 
     <input
@@ -30,6 +33,7 @@ let memberInfoHTML = `<div class="member-section">
       id="username"
       name="username"
       placeholder="Shin Jin"
+      value="${memberName.mb_name}"
       required
     />
     <!-- type="text" 表示這是一個文本輸入框  -->
@@ -37,7 +41,7 @@ let memberInfoHTML = `<div class="member-section">
     <!-- name="username"是用於提交表單時該字段的名稱，這個名稱將與輸入框中用戶輸入的實際數據一起被發送到伺服器，伺服器可以通過這個名稱來識別和處理用戶名稱數據。 -->
     <!-- placeholder屬性被用來提供輸入框的引導文字 -->
 
-    <label for="account">會員帳號</label>
+    <label class="label" for="account">會員帳號</label>
     <input
       type="text"
       id="account"
@@ -46,7 +50,7 @@ let memberInfoHTML = `<div class="member-section">
       required
     />
 
-    <label for="birthday">生日(填寫後即無法自行修改)</label>
+    <label class="label" for="birthday">生日(填寫後即無法自行修改)</label>
     <input type="date" name="birthday" id="birthday" required />
 
     <p>運送地址</p>
@@ -98,7 +102,7 @@ let memberInfoHTML = `<div class="member-section">
       </div>
     </div>
 
-    <label for="address"></label>
+    <label class="label" for="address"></label>
     <input
       type="text"
       id="address"
@@ -125,7 +129,7 @@ let memberInfoHTML = `<div class="member-section">
     <h2 class="active">修改密碼</h2>
     <form method="post" action="#">
       <!-- 表單數據將提交到當前頁面，不會導致頁面的刷新，而是觸發 JavaScript 函數或使用 AJAX 技術進行處理。 -->
-      <label for="old-password">請輸入舊密碼</label>
+      <label class="label" for="old-password">請輸入舊密碼</label>
       <!-- for="old-password" 屬性表示這個 <label> 與表單中 id="old-password" 的元素相關聯。 -->
 
       <input
@@ -140,7 +144,7 @@ let memberInfoHTML = `<div class="member-section">
       <!-- name="old-password"是用於提交表單時該字段的名稱，這個名稱將與輸入框中用戶輸入的實際數據一起被發送到伺服器，伺服器可以通過這個名稱來識別和處理用戶名稱數據。 -->
       <!-- placeholder屬性被用來提供輸入框的引導文字 -->
 
-      <label for="new-password">請輸入新密碼</label>
+      <label class="label" for="new-password">請輸入新密碼</label>
       <input
         type="text"
         id="new-password"
@@ -149,7 +153,7 @@ let memberInfoHTML = `<div class="member-section">
         required
       />
 
-      <label for="again-password">請再次輸入新密碼</label>
+      <label class="label" for="again-password">請再次輸入新密碼</label>
       <input
         type="text"
         id="again-password"
