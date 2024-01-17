@@ -7,18 +7,19 @@ if (!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"] == "")) {
   header("Location: index_.php");
 }
 
-// 執行登出動作
-if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
-  unset($_SESSION["loginMember"]);
-  unset($_SESSION["memberLevel"]);
-  header("Location: index_.php");
+// 執行修改動作，POST與表單form的method="POST"一致
+if (isset($_POST["action"]) && ($_POST["action"] == "edit")) {
+  //  echo $_GET['id'];確認是否正常執行
+  $member_edit = "UPDATE member SET mb_name = ?, mb_birthday = ?, mb_address = ? WHERE mb_id = ?";
+
+  $stmt = $db_link->prepare($member_edit);
+  $stmt->bind_param("sisi", $_POST['mb_name'], $_GET['mb_birthday'], $_POST['mb_address'], $_GET['id']);
+
+  $stmt->execute();
 }
 
 // 繫結登入會員資料
-//$query_RecMember = "SELECT * FROM member WHERE mb_id ='{$_SESSION["loginMember"]}' ";
 $query_RecMember = "SELECT mb_id, mb_level, mb_account, mb_password, mb_name, mb_birthday, mb_address FROM member WHERE mb_id =?";
-// $RecMember = $db_link->query($query_RecMember);
-// $row_RecMember = $RecMember->fetch_assoc();
 $stmt = $db_link->prepare($query_RecMember);
 $stmt->bind_param("i", $_GET['id']);
 $stmt->execute();
@@ -36,11 +37,17 @@ $stmt->bind_result(
   $mbPassword,
   $mbName,
   $mbBirthday,
-  $mbAddress,
+  $mbAddress
 );
 
 $stmt->fetch();
 
+// 執行登出動作
+if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
+  unset($_SESSION["loginMember"]);
+  unset($_SESSION["memberLevel"]);
+  header("Location: index_.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,8 +104,8 @@ $stmt->fetch();
 
     <input
       type="text"
-      id="username"
-      name="username"
+      id="mb_name"
+      name="mb_name"
       placeholder="請輸入姓名"
       value="<?php echo $mbName; ?>"
       required
@@ -113,13 +120,12 @@ $stmt->fetch();
       type="text"
       id="account"
       name="account"
-
       value="<?php echo $mbAccount; ?>"
       required
     />
 
     <label class="label" for="birthday">生日(填寫後即無法自行修改)</label>
-    <input type="date" name="birthday" id="birthday" value="<?php echo $mbBirthday; ?>" required />
+    <input type="date" name="mbBirthday" id="mbBirthday" value="<?php echo $mbBirthday; ?>" required />
 
     <p>運送地址</p>
     <div class="selects">
@@ -173,14 +179,15 @@ $stmt->fetch();
     <label class="label" for="address"></label>
     <input
       type="text"
-      id="address"
-      name="address"
+      id="mb_address"
+      name="mb_address"
       placeholder="請輸入地址"
       value="<?php echo $mbAddress; ?>"
       required
     />
-
-    <button class="button">確定修改</button>
+    <input type="hidden" name="action" value="edit">
+    <input type="hidden" name="mbId" value="<?php echo $_GET['id'] ?>">
+    <button class="button" type="submit" name="button">確定修改</button>
   </form>
 </div>
 <!-- 會員資料end -->
@@ -230,7 +237,8 @@ $stmt->fetch();
         placeholder="請再次輸入新密碼"
         required
       />
-      <button class="button">確定修改</button>
+
+      <button class="button" type="submit" name="button">確定修改</button>
     </form>
   </div>
   <!-- 修改密碼end -->

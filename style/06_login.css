@@ -32,6 +32,7 @@ a {
   text-decoration: none; /* 移除超連結的底線樣式 */
   color: inherit; /* 使用父元素的文字顏色 */
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -79,7 +80,7 @@ button {
   display: flex; /* 使用 flexbox */
   align-items: center; /* 將文字垂直居中 */
   justify-content: center; /* 水平置中 */
-  margin: 1rem 0; /* 調整上邊距 */
+  margin: 10px 0; /* 調整上邊距 */
 }
 
 button:hover {
@@ -113,4 +114,9 @@ button:hover {
 
 .pointer {
   cursor: pointer;
+}
+
+.form-agree {
+  width: 100%;
+  justify-content: space-between;
 }

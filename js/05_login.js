@@ -43,11 +43,11 @@ let signInHTML = `
           
           <div class="other-methods">
             <div class="social-icon">
-              <img src="./icon/black/logo_ci_fb.png" alt="點選以使用fb帳號登入" />
-              <img src="./icon/black/logo_sq_line.png" alt="點選以使用line帳號登入"/>
+              <img src="./icon/black/logo_ci_fb.png" class="pointer" alt="點選以使用fb帳號登入" />
+              <img src="./icon/black/logo_sq_line.png" class="pointer" alt="點選以使用line帳號登入"/>
             </div>
             <div>
-              <p class="cursor">忘記密碼</p>
+              <p class="pointer">忘記密碼</p>
             </div>
           </div>
         </form>
@@ -94,24 +94,24 @@ let newCustomerHTML = `
         id="rePassword"
         name="rePassword"
         required
-        placeholder="重新輸入密碼"
+        placeholder="再次輸入密碼"
       />
     </div>
     <p id="registerMessage"></p>
   </div>
-  <div class="input-container">
-    <form action="">
-      <input type="checkbox" id="agreeTerms" required />
-      我已閱讀並同意會員約定條款說明
+  <div>
+    <form action="" class="form-agree">
+    <input type="checkbox" id="agreeTerms" id="agreeTerms" required />
+      <label for="agreeTerms">我已閱讀並同意會員約定條款說明</label>
     </form>
   </div>
-  <button type="button" onclick="register()">註冊</button>
+  <button type="submit" onclick="register()">註冊</button>
 
   <div class="other-methods">
     <div class="social-icon">
-      <img src="./icon/black/logo_ci_fb.png" alt="點選以使用fb帳號登入" />
+      <img src="./icon/black/logo_ci_fb.png" class="pointer" alt="點選以使用fb帳號登入" />
       <img
-        src="./icon/black/logo_sq_line.png"
+        src="./icon/black/logo_sq_line.png" class="pointer"
         alt="點選以使用line帳號登入"
       />
     </div>
