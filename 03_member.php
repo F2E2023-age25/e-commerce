@@ -13,9 +13,16 @@ if (isset($_POST["action"]) && ($_POST["action"] == "edit")) {
   $member_edit = "UPDATE member SET mb_name = ?, mb_birthday = ?, mb_address = ? WHERE mb_id = ?";
 
   $stmt = $db_link->prepare($member_edit);
-  $stmt->bind_param("sisi", $_POST['mb_name'], $_GET['mb_birthday'], $_POST['mb_address'], $_GET['id']);
+  $stmt->bind_param("ssss", $_POST['mb_name'], $_POST['mb_birthday'], $_POST['mb_address'], $_GET['id']);
 
   $stmt->execute();
+}
+
+// 執行登出動作
+if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
+  unset($_SESSION["loginMember"]);
+  unset($_SESSION["memberLevel"]);
+  header("Location: index_.php");
 }
 
 // 繫結登入會員資料
@@ -41,13 +48,6 @@ $stmt->bind_result(
 );
 
 $stmt->fetch();
-
-// 執行登出動作
-if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
-  unset($_SESSION["loginMember"]);
-  unset($_SESSION["memberLevel"]);
-  header("Location: index_.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +125,7 @@ if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
     />
 
     <label class="label" for="birthday">生日(填寫後即無法自行修改)</label>
-    <input type="date" name="mbBirthday" id="mbBirthday" value="<?php echo $mbBirthday; ?>" required />
+    <input type="date" name="mb_birthday" id="mb_birthday" value="<?php echo $mbBirthday; ?>" required />
 
     <p>運送地址</p>
     <div class="selects">
