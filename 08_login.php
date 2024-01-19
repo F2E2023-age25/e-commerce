@@ -31,10 +31,10 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     // 將會員權限變數$level儲存在$_SESSION["memberLevel"]中
     $_SESSION["loginMember"] = $userid;
     $_SESSION["memberLevel"] = $level;
-    if($_SESSION["memberLevel"] == "member") {
-      header("Location:03_member.php?id=$userid");
-    } else {
+    if($_SESSION["memberLevel"] == "admin") {
       header("Location:09_admin.php");
+    } else {
+      header("Location:03_member.php?id=$userid");
     }
   } else {
     // 若登入失敗，則導回原頁，並帶URL參數?errMsg=1，原頁面接收到此參數後顯示相關訊息

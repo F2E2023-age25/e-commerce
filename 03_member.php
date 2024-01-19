@@ -7,7 +7,7 @@ if (!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"] == "")) {
   header("Location: index_.php");
 }
 
-// 執行修改動作，POST與表單form的method="POST"一致
+// 執行會員資料修改動作，POST與表單form的method="POST"一致
 if (isset($_POST["action"]) && ($_POST["action"] == "edit")) {
   //  echo $_GET['id'];確認是否正常執行
   $member_edit = "UPDATE member SET mb_name = ?, mb_birthday = ?, mb_address = ? WHERE mb_id = ?";
@@ -16,6 +16,33 @@ if (isset($_POST["action"]) && ($_POST["action"] == "edit")) {
   $stmt->bind_param("ssss", $_POST['mb_name'], $_POST['mb_birthday'], $_POST['mb_address'], $_GET['id']);
 
   $stmt->execute();
+}
+
+// 執行密碼修改動作，POST與表單form的method="POST"一致
+if (isset($_POST["action"]) && ($_POST["action"] == "password")) {
+  //  echo $_GET['id'];確認是否正常執行
+
+  $query_RecPassword = "SELECT mb_password FROM member WHERE mb_id =?";
+  $stmt = $db_link->prepare($query_RecPassword);
+  $stmt->bind_param("i",$_GET['id']);
+  $stmt->execute();
+  $stmt->store_result(); // 存儲結果集
+
+  // 綁定查詢結果到變數中
+  $stmt->bind_result($originalPassword);
+
+  // 取得查詢結果
+  $stmt->fetch();
+
+  if(password_verify($_POST["old_password"], $originalPassword) && $_POST['new_password'] == $_POST['check_password']) {
+    $mpass = password_hash($_POST['new_password'], PASSWORD_BCRYPT);
+    $stmt->free_result();// 釋放上一個結果集，避免結果集未耗盡使MySQL產生混亂
+    $password_edit = "UPDATE member SET mb_password = ? WHERE mb_id = ?";
+    $stmt = $db_link->prepare($password_edit);
+    $stmt->bind_param("ss", $mpass,$_GET['id']);
+    $stmt->execute();
+  }
+
 }
 
 // 執行登出動作
@@ -97,7 +124,7 @@ $stmt->fetch();
 <!-- 會員資料start -->
 <div class="info">
   <h2 class="active">會員資料</h2>
-  <form method="post" action="#">
+  <form method="post" action="">
     <!-- 表單數據將提交到當前頁面，不會導致頁面的刷新，而是觸發 JavaScript 函數或使用 AJAX 技術進行處理。 -->
     <label class="label" for="username">會員姓名</label>
     <!-- for="username" 屬性表示這個 <label> 與表單中 id="username" 的元素相關聯。 -->
@@ -194,50 +221,53 @@ $stmt->fetch();
 <div>
   <div class="hierarchy">
     <h2 class="active">會員級別</h2>
-    <h3>您為 一般會員</h3>
+    <h3>您為 <span style="color:#7b3027; font-weight:600"><?php if($mbLevel == 'vip') {echo 'VIP會員';} else {echo '一般會員';}?></span></h3>
     <h4>
-      2023/12/31前單筆消費滿15,000元，或累積消費滿20,000元，將升等為VIP會員，即可享有9折優惠折扣唷！
+      <?php if($mbLevel == 'vip') {echo '您已享有9折優惠折扣！';} else {echo '2024/12/31前單筆消費滿15,000元，或累積消費滿20,000元，將升等為VIP會員，即可享有9折優惠折扣唷！';}?>
+
     </h4>
   </div>
 
   <!-- 修改密碼start -->
   <div class="revise">
     <h2 class="active">修改密碼</h2>
-    <form method="post" action="#">
+    <form method="post" action="">
       <!-- 表單數據將提交到當前頁面，不會導致頁面的刷新，而是觸發 JavaScript 函數或使用 AJAX 技術進行處理。 -->
       <label class="label" for="old-password">請輸入舊密碼</label>
-      <!-- for="old-password" 屬性表示這個 <label> 與表單中 id="old-password" 的元素相關聯。 -->
+      <!-- for="old-password" 屬性表示這個 <label> 與表單中 id="old_password" 的元素相關聯。 -->
 
       <input
         type="text"
-        id="old-password"
-        name="old-password"
+        id="old_password"
+        name="old_password"
         placeholder=""
         required
       />
-      <!-- type="text" 表示這是一個文本輸入框  -->
+      <!-- type="password" 表示這是一個文本輸入框  -->
       <!-- id="old-password"是在頁面中唯一標識元素，方便通過JavaScript或CSS進行操作。 -->
       <!-- name="old-password"是用於提交表單時該字段的名稱，這個名稱將與輸入框中用戶輸入的實際數據一起被發送到伺服器，伺服器可以通過這個名稱來識別和處理用戶名稱數據。 -->
       <!-- placeholder屬性被用來提供輸入框的引導文字 -->
 
-      <label class="label" for="new-password">請輸入新密碼</label>
+      <label class="label" for="new_password">請輸入新密碼</label>
       <input
-        type="text"
-        id="new-password"
-        name="new-password"
+        type="password"
+        id="new_password"
+        name="new_password"
         placeholder="請設定8位以上英數字"
         required
       />
 
-      <label class="label" for="again-password">請再次輸入新密碼</label>
+      <label class="label" for="check_password">請再次輸入新密碼</label>
       <input
-        type="text"
-        id="again-password"
-        name="again-password"
+        type="password"
+        id="check_password"
+        name="check_password"
         placeholder="請再次輸入新密碼"
         required
       />
 
+      <input type="hidden" name="action" value="password">
+      <input type="hidden" name="mbId" value="<?php echo $_GET['id'] ?>">
       <button class="button" type="submit" name="button">確定修改</button>
     </form>
   </div>
