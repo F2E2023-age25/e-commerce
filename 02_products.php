@@ -53,7 +53,7 @@ $currentMainCategory = "";
                 }
                 ?>
               </div>
-              <li><a href="07_products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
+              <li>　　　<a href="07_products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
                   <?php echo $row_RecCategory['category_sub']; ?>
                 </a>
               </li>

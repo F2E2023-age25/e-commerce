@@ -13,12 +13,12 @@ $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
 // 如果 category_id 存在，則更新商品查詢以依據 URL 中的 category_id 進行篩選
 $query_RecProduct_1 = $category_id
-    ? "SELECT * FROM `images` 
+  ? "SELECT * FROM `images` 
         INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
         INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
         WHERE `product`.`category_id` = $category_id
         ORDER BY `product`.`pd_id` ASC"
-    : "SELECT * FROM `images` 
+  : "SELECT * FROM `images` 
         INNER JOIN `product` ON `images`.`images_id` = `product`.`images_id`
         INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
         ORDER BY `product`.`pd_id` ASC";
@@ -46,10 +46,8 @@ $Rec_Product_1 = $db_link->query($query_RecProduct_1);
     <div class="products-search d-flex justify-content-end">
       <!-- 清單列表模式 -->
       <div class="list-mode d-flex">
-        <div>img1</div>
-        <div>img2</div>
-        <!-- <img src="" alt=""> -->
-        <!-- <img src="" alt=""> -->
+        <img class="mode-icon" src="./images/00_icon/col_1_gray.svg" alt="">
+        <img class="mode-icon" src="./images/00_icon/col_2_gray.svg" alt="">
       </div>
       <!-- 排序、進階功能 -->
       <div class="search-function d-flex">
@@ -74,8 +72,8 @@ $Rec_Product_1 = $db_link->query($query_RecProduct_1);
                 ?>
               </div>
               <li class="category-sub">　　　<a href="07_products_by_id.php?category_id=<?php echo $row_RecCategory['category_id']; ?>">
-  <?php echo $row_RecCategory['category_sub']; ?>
-</a>
+                  <?php echo $row_RecCategory['category_sub']; ?>
+                </a>
               </li>
             <?php } ?>
           </ul>
@@ -87,7 +85,7 @@ $Rec_Product_1 = $db_link->query($query_RecProduct_1);
           <!-- SSR -->
           <?php while ($row_RecProduct = $Rec_Product_1->fetch_assoc()) { ?>
             <div class="product">
-            <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>">
+              <a href="./05_product_detail.php?id=<?php echo $row_RecProduct['pd_id']; ?>">
                 <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
               </a>
               <div class="d-flex justify-content-between mt-2 mb-4">
