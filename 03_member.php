@@ -41,6 +41,10 @@ if (isset($_POST["action"]) && ($_POST["action"] == "password")) {
     $stmt = $db_link->prepare($password_edit);
     $stmt->bind_param("ss", $mpass,$_GET['id']);
     $stmt->execute();
+    // 修改會員後登出並回到登入頁(需重新登入才能進入會員中心頁面)
+    unset($_SESSION["loginMember"]);
+    unset($_SESSION["memberLevel"]);
+    header("Location: 08_login.php");
   }
 
 }
@@ -151,7 +155,7 @@ $stmt->fetch();
       required
     />
 
-    <label class="label" for="birthday">生日(填寫後即無法自行修改)</label>
+    <label class="label" for="birthday">生日</label>
     <input type="date" name="mb_birthday" id="mb_birthday" value="<?php echo $mbBirthday; ?>" required />
 
     <p>運送地址</p>
