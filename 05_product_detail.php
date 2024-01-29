@@ -78,43 +78,48 @@ $row_RecProduct = $Rec_Product->fetch_assoc();
       <div class="product-detail">
         <div class="what02">
           <!-- SSR -->
-          <?php if($row_RecProduct) { ?>   
+          <?php if ($row_RecProduct) { ?>
             <div class="product">
-            <div class="product-desc">
-              <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
-              <div class="all-desc">
-                <div class="d-flex justify-content-between mt-2 mb-2 product-text">
-                  <p><?php echo $row_RecProduct['pd_name']; ?></p>
-                  <div class="favorite">
-                    <img src="./icon_collect.png" alt="" />
+              <div class="product-desc">
+                <img src="<?php echo $row_RecProduct['image_path_main']; ?>" alt="" />
+                <div class="all-desc">
+                  <div class="d-flex justify-content-between mt-2 mb-2 product-text">
+                    <p><?php echo $row_RecProduct['pd_name']; ?></p>
+                    <div class="favorite">
+                      <img src="./icon_collect.png" alt="" />
+                    </div>
+                  </div>
+                  <div>
+                    <p class="color mt-2 mb-2"><?php echo $row_RecProduct['color_name']; ?></p>
+                    <p class="price mt-2 mb-2">$ <?php echo $row_RecProduct['pd_price']; ?> 元</p>
+                    <select class="mb-2" name="size" id="size">
+                      <option value="">尺寸</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                    </select>
+                    <select name="number" id="number">
+                      <option value="">數量</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                    <button class="btn-add-carts" onclick="addToCart()">加入購物車</button>
+                    <div class="desc pd-desc mt-4">商品描述
+                      <p class="mt-2 p-desc"><?php echo $row_RecProduct['pd_description']; ?></p>
+                      <p class="p-desc">材質：<?php echo $row_RecProduct['pd_material']; ?></p>
+                      <p class="p-desc">厚薄：<?php echo $row_RecProduct['pd_thickness']; ?></p>
+                      <p class="p-desc">彈性：<?php echo $row_RecProduct['pd_elasticity']; ?></p>
+                    </div>
+                    <div class="desc size-desc mt-2">尺寸指南</div>
+                    <div class="desc maintain-desc mt-2">保養方式</div>
                   </div>
                 </div>
-                <div>
-                  <p class="color mt-2 mb-2"><?php echo $row_RecProduct['color_name']; ?></p>
-                  <p class="price mt-2 mb-2">$ <?php echo $row_RecProduct['pd_price']; ?> 元</p>
-                  <select class="mb-2" name="size" id="size">
-                    <option value="">尺寸</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                  </select>
-                  <select name="number" id="number">
-                    <option value="">數量</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                  <button class="btn-add-carts" onclick="addToCart()">加入購物車</button>
-                  <div class="desc pd-desc mt-4">商品描述</div>
-                  <div class="desc size-desc mt-2">尺寸指南</div>
-                  <div class="desc maintain-desc mt-2">保養方式</div>
-                </div>
               </div>
-            </div>
-            <img src="<?php echo $row_RecProduct['image_path_other1']; ?>" alt="">
-            <img src="<?php echo $row_RecProduct['image_path_other2']; ?>" alt="">
+              <img src="<?php echo $row_RecProduct['image_path_other1']; ?>" alt="">
+              <img src="<?php echo $row_RecProduct['image_path_other2']; ?>" alt="">
             </div>
           <?php } ?>
         </div>
@@ -125,24 +130,24 @@ $row_RecProduct = $Rec_Product->fetch_assoc();
   require('./00_footer.php')
   ?>
 
-<script>
-  function addToCart(){
+  <script>
+    function addToCart() {
 
-  // 獲取當前 URL
-  let currentUrl=window.location.href;
+      // 獲取當前 URL
+      let currentUrl = window.location.href;
 
-  // 檢查 URL 中是否已包含參數? 如果已包含，就使用'?'作為分隔符，否則使用''。
-  let separator=currentUrl.includes('?')?'?':'';
+      // 檢查 URL 中是否已包含參數? 如果已包含，就使用'?'作為分隔符，否則使用''。
+      let separator = currentUrl.includes('?') ? '?' : '';
 
-  // 將 PHP 變數轉換為 JSON 字符串
-  let pdIdJson = <?php echo json_encode($pd_id); ?>;
+      // 將 PHP 變數轉換為 JSON 字符串
+      let pdIdJson = <?php echo json_encode($pd_id); ?>;
 
-  // 構建新的 URL，加入 id 參數
-  let newUrl = '04_carts.php' + separator + 'id='  + pdIdJson;
+      // 構建新的 URL，加入 id 參數
+      let newUrl = '04_carts.php' + separator + 'id=' + pdIdJson;
 
-  // 導航到新的 URL
-  window.location.href=newUrl;
-  }
+      // 導航到新的 URL
+      window.location.href = newUrl;
+    }
   </script>
 </body>
 

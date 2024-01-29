@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-01-01 11:28:46
+-- 產生時間： 2024-01-29 19:09:25
 -- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -204,6 +204,7 @@ INSERT INTO `maintainance` (`mt_id`, `category_sub`, `mt_method`) VALUES
 
 CREATE TABLE `member` (
   `mb_id` int(11) NOT NULL COMMENT '會員id\r\n會員id',
+  `mb_level` varchar(10) NOT NULL COMMENT '會員等級',
   `mb_account` varchar(30) NOT NULL COMMENT '會員帳號(email)',
   `mb_password` varchar(60) NOT NULL COMMENT '會員密碼',
   `mb_name` varchar(20) DEFAULT NULL COMMENT '會員姓名',
@@ -215,17 +216,18 @@ CREATE TABLE `member` (
 -- 傾印資料表的資料 `member`
 --
 
-INSERT INTO `member` (`mb_id`, `mb_account`, `mb_password`, `mb_name`, `mb_birthday`, `mb_address`) VALUES
-(1, 'r269@gmail.com', '$2a$10$A8RqaRRq9CcEuPABuIlMeeU6jIArNJK9xE0FJ0/OfcbIn5beD0pLm', '孟諾熙', '1993-08-08', '臺中市大甲區順天路23號'),
-(2, 'euPr@gmail.com', '$2a$10$paRkBRvvQVfBJlehpEjaQOL4eKTNYaXtgE5/LErxIAZUyPWxYmDVy', '蘇汶瑄', '1999-11-07', '桃園市平鎮區三和路28號'),
-(3, 'AHWk@gmail.com', '$2a$10$vvqDNeGCymlU7ykXATVid.1GG.qS1xLWZ66c93yhPgS8iVjNf/yTi', '裴雨薰', '1995-12-20', '臺北市北投區新市街32號'),
-(4, '5EQt@gmail.com', '$2a$10$3Xapn7uiYHsFosEU4nHEKeDv6sEkcelaS/DTK0Fws7k113zPJxLCK', '白可瑄', '1991-05-04', '高雄市小港區高坪二十街8號'),
-(5, '82ND@gmail.com', '$2a$10$YB5IrAKlmxnKTBn.yNqe6uKxHfdwSarHyR4WFVFNU5YTpTQ9BPAxO', '古悅芊', '1997-10-31', '臺中市太平區民族街16號'),
-(6, 'pKe3@gmail.com', '$2a$10$kbrOBiI9JOTEyiW6ZZLQ8eAZaywznIOkFKpqpMMwzIbeLWTENMiwu', '杜邦鈺', '1996-04-16', '宜蘭縣三星鄉尚大路34號'),
-(7, 'mERa@gmail.com', '$2a$10$/9S7xcRNUo0DPTFX4Ee3eeKlQ20SttYU.EFxvBuMPM526Mzbv15.q', '許靜靜', '1992-11-29', '新竹縣寶山鄉三油一路3號'),
-(8, 'KfnP@gmail.com', '$2a$10$Z2C/x9.6S6W8JXOjzvUrdOxpPQrt.CitUoVJ3N31D.vFcrwdaztOG', '紀妮萱', '1998-09-21', '臺南市安南區環館五路5號'),
-(9, 'GmNZ@gmail.com', '$2a$10$BpAyNnhab6rHn1oi7gKzEeKFA3pbxQt8ISORQU3rrVMGGZ4bV84TS', '關妙焉', '1990-12-02', '新北市新店區禾和一街14號'),
-(10, '6pHC@gmail.com', '$2a$10$7Bl7Oj4bk22QQEfsWhX1N.7kKU4kNlKBNZORzFvvb9I4MUpTIDQsK', '易貝兒', '1994-03-15', '臺北市南港區東新街18號');
+INSERT INTO `member` (`mb_id`, `mb_level`, `mb_account`, `mb_password`, `mb_name`, `mb_birthday`, `mb_address`) VALUES
+(1, 'member', 'r269@gmail.com', '$2y$10$gqEYJAd0bXCk7HnpcMKJyOqRRyKpiATaO6r9dQwi/RL7kv2Fbca.C', '孟筱青', '1993-08-08', '臺中市大甲區順天路100號'),
+(2, 'vip', 'euPr@gmail.com', '$2a$10$paRkBRvvQVfBJlehpEjaQOL4eKTNYaXtgE5/LErxIAZUyPWxYmDVy', '蘇汶瑄', '1999-11-07', '桃園市平鎮區三和路28號'),
+(3, 'member', 'AHWk@gmail.com', '$2a$10$vvqDNeGCymlU7ykXATVid.1GG.qS1xLWZ66c93yhPgS8iVjNf/yTi', '裴雨薰', '1995-12-20', '臺北市北投區新市街32號'),
+(4, 'member', '5EQt@gmail.com', '$2a$10$3Xapn7uiYHsFosEU4nHEKeDv6sEkcelaS/DTK0Fws7k113zPJxLCK', '白可瑄', '1991-05-04', '高雄市小港區高坪二十街8號'),
+(5, 'member', '82ND@gmail.com', '$2a$10$YB5IrAKlmxnKTBn.yNqe6uKxHfdwSarHyR4WFVFNU5YTpTQ9BPAxO', '古悅芊', '1997-10-31', '臺中市太平區民族街16號'),
+(6, 'member', 'pKe3@gmail.com', '$2a$10$kbrOBiI9JOTEyiW6ZZLQ8eAZaywznIOkFKpqpMMwzIbeLWTENMiwu', '杜邦鈺', '1996-04-16', '宜蘭縣三星鄉尚大路34號'),
+(7, 'member', 'mERa@gmail.com', '$2a$10$/9S7xcRNUo0DPTFX4Ee3eeKlQ20SttYU.EFxvBuMPM526Mzbv15.q', '許靜靜', '1992-11-29', '新竹縣寶山鄉三油一路3號'),
+(8, 'member', 'KfnP@gmail.com', '$2a$10$Z2C/x9.6S6W8JXOjzvUrdOxpPQrt.CitUoVJ3N31D.vFcrwdaztOG', '紀妮萱', '1998-09-21', '臺南市安南區環館五路5號'),
+(9, 'member', 'GmNZ@gmail.com', '$2a$10$BpAyNnhab6rHn1oi7gKzEeKFA3pbxQt8ISORQU3rrVMGGZ4bV84TS', '關妙焉', '1990-12-02', '新北市新店區禾和一街14號'),
+(10, 'member', '6pHC@gmail.com', '$2a$10$7Bl7Oj4bk22QQEfsWhX1N.7kKU4kNlKBNZORzFvvb9I4MUpTIDQsK', '易貝兒', '1994-03-15', '臺北市南港區東新街18號'),
+(11, 'admin', 'shinjin', '$2a$10$8ueHDy98hpcHv.VBN2qhye5SKoSVzqnOPN1LNBL6WL3OO5wqUqhTC', 'Admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -491,7 +493,7 @@ ALTER TABLE `maintainance`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `mb_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '會員id\r\n會員id', AUTO_INCREMENT=11;
+  MODIFY `mb_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '會員id\r\n會員id', AUTO_INCREMENT=20;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order`
