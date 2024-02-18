@@ -38,7 +38,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     }
   } else {
     // 若登入失敗，則導回原頁，並帶URL參數?errMsg=1，原頁面接收到此參數後顯示相關訊息
-    header("Location: index_.php?errMsg=1");
+    header("Location: index.php?errMsg=1");
   }
 }
 
@@ -141,7 +141,7 @@ if (isset($_POST["action"]) && ($_POST["action"] == "join")) {
   <?php if (isset($_GET["registerstate"]) && ($_GET["registerstate"] == "1")) { ?>
     <script language="javascript">
       alert('會員新增成功\n請用申請的帳號密碼登入。');
-      window.location.href = 'index_.php';
+      window.location.href = 'index.php';
     </script>
   <?php } ?>
   <div>

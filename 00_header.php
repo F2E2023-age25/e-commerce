@@ -33,7 +33,7 @@ $Rec_Product = $db_link->query($query_RecProduct);
     <!-- logo -->
     <div class="header-row">
       <div class="header-logo">
-        <a href="./index_.php">
+        <a href="./index.php">
           <img class="header-logo-mobile" src="./images/00_icon/icon_mobile.png" alt="" />
           <img class="header-logo-tab" src="./images/00_icon/icon_tab.png" alt="" />
         </a>

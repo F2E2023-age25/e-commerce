@@ -4,7 +4,7 @@ session_start();
 
 // 檢查是否經過登入，如果沒有登入，則導回首頁
 if (!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"] == "")) {
-  header("Location: index_.php");
+  header("Location: index.php");
 }
 
 // 執行會員資料修改動作，POST與表單form的method="POST"一致
@@ -53,7 +53,7 @@ if (isset($_POST["action"]) && ($_POST["action"] == "password")) {
 if (isset($_GET["logout"]) && ($_GET["logout"] == "true")) {
   unset($_SESSION["loginMember"]);
   unset($_SESSION["memberLevel"]);
-  header("Location: index_.php");
+  header("Location: index.php");
 }
 
 // 繫結登入會員資料
